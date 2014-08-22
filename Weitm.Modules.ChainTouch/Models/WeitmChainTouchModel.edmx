@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WeitmChainTouchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_Weitm_ChainTouch_Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TargetId" Type="uniqueidentifier" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Department" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="500" />
+          <Property Name="Landline" Type="nvarchar" MaxLength="500" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Weitm_ChainTouch_Developer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PropertyType" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DevelopedGfaInChina" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NumberOfProjectsInChina" Type="int" />
+          <Property Name="ChinaHeadquarterAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="BriefIntroduction" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Weitm_ChainTouch_Favorite">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PropertyId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Weitm_ChainTouch_IndustrialPark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Province" Type="nvarchar" MaxLength="500" />
+          <Property Name="Municipal" Type="nvarchar" MaxLength="500" />
+          <Property Name="District" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="NorthLatitude" Type="float" />
+          <Property Name="EastLongitude" Type="float" />
+          <Property Name="EstablishedYear" Type="int" />
+          <Property Name="JurisdictionAreaSize" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PillarIndustry" Type="nvarchar" MaxLength="500" />
+          <Property Name="MncPresence" Type="nvarchar" MaxLength="500" />
+          <Property Name="Others" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Weitm_ChainTouch_Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TargetId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Weitm_ChainTouch_Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SponsorId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Type" Type="nvarchar" MaxLength="500" />
+          <Property Name="Province" Type="nvarchar" MaxLength="500" />
+          <Property Name="Municipal" Type="nvarchar" MaxLength="500" />
+          <Property Name="District" Type="nvarchar" MaxLength="500" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="NorthLatitude" Type="float" />
+          <Property Name="EastLongitude" Type="float" />
+          <Property Name="TotalLandSize" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="GrossFloorArea" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LeasableArea" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="AvailableDate" Type="nvarchar" MaxLength="500" />
+          <Property Name="CompleteDate" Type="nvarchar" MaxLength="500" />
+          <Property Name="PropertyStructure" Type="nvarchar" MaxLength="500" />
+          <Property Name="NumberOfFloors" Type="int" />
+          <Property Name="ClearHeight" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ColumnSpace" Type="nvarchar" MaxLength="500" />
+          <Property Name="ColumnSpaceWidth" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ColumnSpaceHeight" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PowerCapacity" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="FloorLoading" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Rent" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ManagementFee" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ManagementFeeIncludedInRent" Type="bit" />
+          <Property Name="ContactIds" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="F_Weitm_GetDistance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="LatBegin" Type="real" Mode="In" />
+          <Parameter Name="LngBegin" Type="real" Mode="In" />
+          <Parameter Name="LatEnd" Type="real" Mode="In" />
+          <Parameter Name="LngEnd" Type="real" Mode="In" />
+        </Function>
+        <EntityContainer Name="WeitmChainTouchModelStoreContainer">
+          <EntitySet Name="T_Weitm_ChainTouch_Contact" EntityType="Self.T_Weitm_ChainTouch_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Weitm_ChainTouch_Developer" EntityType="Self.T_Weitm_ChainTouch_Developer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Weitm_ChainTouch_Favorite" EntityType="Self.T_Weitm_ChainTouch_Favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Weitm_ChainTouch_IndustrialPark" EntityType="Self.T_Weitm_ChainTouch_IndustrialPark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Weitm_ChainTouch_Picture" EntityType="Self.T_Weitm_ChainTouch_Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Weitm_ChainTouch_Property" EntityType="Self.T_Weitm_ChainTouch_Property" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WeitmChainTouchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TargetId" Type="Guid" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Landline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PropertyType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DevelopedGfaInChina" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NumberOfProjectsInChina" Type="Int32" />
+          <Property Name="ChinaHeadquarterAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BriefIntroduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="IndustrialPark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Municipal" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EstablishedYear" Type="Int32" />
+          <Property Name="JurisdictionAreaSize" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PillarIndustry" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MncPresence" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Others" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NorthLatitude" Type="Double" />
+          <Property Name="EastLongitude" Type="Double" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TargetId" Type="Guid" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SponsorId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Municipal" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TotalLandSize" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrossFloorArea" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LeasableArea" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AvailableDate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CompleteDate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyStructure" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfFloors" Type="Int32" />
+          <Property Name="ClearHeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ColumnSpace" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnSpaceWidth" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ColumnSpaceHeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PowerCapacity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FloorLoading" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Rent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ManagementFee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ManagementFeeIncludedInRent" Type="Boolean" />
+          <Property Name="ContactIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NorthLatitude" Type="Double" />
+          <Property Name="EastLongitude" Type="Double" />
+          <NavigationProperty Name="Favorites" Relationship="WeitmChainTouchModel.FavoriteProperty" FromRole="Property" ToRole="Favorite" />
+        </EntityType>
+        <EntityContainer Name="WeitmChainTouchEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="WeitmChainTouchModel.Contact" />
+          <EntitySet Name="Developers" EntityType="WeitmChainTouchModel.Developer" />
+          <EntitySet Name="IndustrialParks" EntityType="WeitmChainTouchModel.IndustrialPark" />
+          <EntitySet Name="Pictures" EntityType="WeitmChainTouchModel.Picture" />
+          <EntitySet Name="Properties" EntityType="WeitmChainTouchModel.Property" />
+          <EntitySet Name="Favorites" EntityType="WeitmChainTouchModel.Favorite" />
+          <AssociationSet Name="FavoriteProperty" Association="WeitmChainTouchModel.FavoriteProperty">
+            <End Role="Favorite" EntitySet="Favorites" />
+            <End Role="Property" EntitySet="Properties" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PropertyId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="PropertyId" Type="Guid" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Property" Relationship="WeitmChainTouchModel.FavoriteProperty" FromRole="Favorite" ToRole="Property" />
+        </EntityType>
+        <Association Name="FavoriteProperty">
+          <End Type="WeitmChainTouchModel.Favorite" Role="Favorite" Multiplicity="*" />
+          <End Type="WeitmChainTouchModel.Property" Role="Property" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeitmChainTouchModelStoreContainer" CdmEntityContainer="WeitmChainTouchEntities">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="WeitmChainTouchModel.Contact">
+              <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Contact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TargetId" ColumnName="TargetId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Landline" ColumnName="Landline" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developers">
+            <EntityTypeMapping TypeName="WeitmChainTouchModel.Developer">
+              <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Developer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+                <ScalarProperty Name="DevelopedGfaInChina" ColumnName="DevelopedGfaInChina" />
+                <ScalarProperty Name="NumberOfProjectsInChina" ColumnName="NumberOfProjectsInChina" />
+                <ScalarProperty Name="ChinaHeadquarterAddress" ColumnName="ChinaHeadquarterAddress" />
+                <ScalarProperty Name="BriefIntroduction" ColumnName="BriefIntroduction" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndustrialParks">
+            <EntityTypeMapping TypeName="WeitmChainTouchModel.IndustrialPark">
+              <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_IndustrialPark">
+                <ScalarProperty Name="EastLongitude" ColumnName="EastLongitude" />
+                <ScalarProperty Name="NorthLatitude" ColumnName="NorthLatitude" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Municipal" ColumnName="Municipal" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+                <ScalarProperty Name="JurisdictionAreaSize" ColumnName="JurisdictionAreaSize" />
+                <ScalarProperty Name="PillarIndustry" ColumnName="PillarIndustry" />
+                <ScalarProperty Name="MncPresence" ColumnName="MncPresence" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="WeitmChainTouchModel.Picture">
+              <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Picture">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TargetId" ColumnName="TargetId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="WeitmChainTouchModel.Property">
+              <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Property">
+                <ScalarProperty Name="EastLongitude" ColumnName="EastLongitude" />
+                <ScalarProperty Name="NorthLatitude" ColumnName="NorthLatitude" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SponsorId" ColumnName="SponsorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Municipal" ColumnName="Municipal" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="TotalLandSize" ColumnName="TotalLandSize" />
+                <ScalarProperty Name="GrossFloorArea" ColumnName="GrossFloorArea" />
+                <ScalarProperty Name="LeasableArea" ColumnName="LeasableArea" />
+                <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
+                <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+                <ScalarProperty Name="PropertyStructure" ColumnName="PropertyStructure" />
+                <ScalarProperty Name="NumberOfFloors" ColumnName="NumberOfFloors" />
+                <ScalarProperty Name="ClearHeight" ColumnName="ClearHeight" />
+                <ScalarProperty Name="ColumnSpace" ColumnName="ColumnSpace" />
+                <ScalarProperty Name="ColumnSpaceWidth" ColumnName="ColumnSpaceWidth" />
+                <ScalarProperty Name="ColumnSpaceHeight" ColumnName="ColumnSpaceHeight" />
+                <ScalarProperty Name="PowerCapacity" ColumnName="PowerCapacity" />
+                <ScalarProperty Name="FloorLoading" ColumnName="FloorLoading" />
+                <ScalarProperty Name="Rent" ColumnName="Rent" />
+                <ScalarProperty Name="ManagementFee" ColumnName="ManagementFee" />
+                <ScalarProperty Name="ManagementFeeIncludedInRent" ColumnName="ManagementFeeIncludedInRent" />
+                <ScalarProperty Name="ContactIds" ColumnName="ContactIds" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorites">
+            <EntityTypeMapping TypeName="WeitmChainTouchModel.Favorite">
+              <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Favorite">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

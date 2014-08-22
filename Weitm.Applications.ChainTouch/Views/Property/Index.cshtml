@@ -1,0 +1,155 @@
+﻿@section header{
+    <style type="text/css">
+        .lisitng-grid-layout .main { margin:0px;}
+        #overview .map-wrap { border-top: 1px solid #dedede; padding:0px}
+        #overview .map-label { top:0px; right:0px;}
+        #overview #property_map { height: 650px; }
+         .option-bar { margin-right: 15px; }
+    </style>
+} 
+
+<!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Property</span></h1>
+            <p>700xxx Shanghai, China</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents lisitng-grid-layout">
+
+    <div class="row">
+
+        <div class="span6 main-wrap">
+
+            <!-- Main Content -->
+            <div class="main">
+
+                <section id="overview">
+
+                    <div class="map-wrap clearfix">
+                        <span class="map-label">Property Map</span>
+                        <div id="property_map">
+
+                        </div>
+
+                        @*<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                        <script type="text/javascript">
+                            // Google Map
+                            function initialize() {
+                                var geocoder = new google.maps.Geocoder();
+                                var map;
+                                var latlng = new google.maps.LatLng(-37.817917, 144.965065);
+                                var infowindow = new google.maps.InfoWindow();
+                                var myOptions = {
+                                    zoom: 17,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+
+                                map = new google.maps.Map(document.getElementById("property_map"), myOptions);
+
+                                geocoder.geocode({ 'location': latlng },
+                                    function (results, status) {
+                                        if (status == google.maps.GeocoderStatus.OK) {
+                                            map.setCenter(results[0].geometry.location);
+                                            var marker = new google.maps.Marker({
+                                                map: map,
+                                                position: results[0].geometry.location
+                                            });
+                                            //alert(results[0].formatted_address);
+                                            //infowindow.setContent(results[0].formatted_address);
+                                            //infowindow.open(map, marker);
+                                        }
+                                        else {
+                                            alert("Geocode was not successful for the following reason: " + status);
+                                        }
+                                    });
+
+                            }
+
+                            initialize();
+                        </script>*@
+                        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
+                        <script>
+                            // 百度地图API功能
+                            var map = new BMap.Map("property_map");                        // 创建Map实例
+                            map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);     // 初始化地图,设置中心点坐标和地图级别
+                            map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+                            map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+                            map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+                            map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+                            map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+                            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+                        </script>
+                    </div>
+                </section>
+
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <div class="span6 sidebar-wrap">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+
+                <section class="widget advance-search">
+                    <h4 class="title search-heading">Find Your Property<i class="icon-search"></i></h4>
+                    <div class="as-form-wrap">
+                        <form class="advance-search-form clearfix" action="#" method="get">
+
+                            <div class="option-bar">
+                                <label>Type</label>
+                                <span class="selectwrap">
+                                    <select name="location" id="select-location" class="search-select">
+                                        <option value="any" selected="selected">Any</option>
+                                        <option value="miami">Factory</option>
+                                        <option value="newyork">Warehouse</option>
+                                    </select>
+                                </span>
+                            </div>
+
+                            <div class="option-bar">
+                                <label>Location</label>
+                                <span class="selectwrap">
+                                    <input type="text" />
+                                </span>
+                            </div>
+
+                            <input type="submit" value="Search" class=" real-btn btn">
+                        </form>
+                    </div>
+                    @for (int i = 1; i <= 2; i++)
+                    {
+                        <article class="property-item clearfix">
+                            <figure>
+                                <a href="#" title="12345 Southwest 39th Shanghai">
+                                    <img src="~/Images/property.jpg" alt="12345 Southwest 39th Shanghai" title="12345 Southwest 39th Shanghai">
+                                </a>
+                                <figcaption>On Rent</figcaption>
+                            </figure>
+                            <div class="detail">
+                                <h5 class="price">$x,xxx Per Month<small> - type I</small></h5>
+                                <p>Here we write some introduction…</p>
+                                <a class="more-details" href="~/Property/Detail/">More Details <i class="icon-caret-right"></i></a>
+                            </div>
+                        </article>
+                    }
+                    <div class="pagination clearfix">
+                        <a href="#" class="real-btn current">1</a>
+                        <a href="#" class="real-btn">2</a>
+                        <a href="#" class="real-btn">3</a>
+                        <a href="#" class="real-btn">4</a>
+                        <a href="#" class="real-btn">5</a>
+                        <a href="#" class="real-btn">...</a>
+                    </div>
+                </section>
+            </aside><!-- End Sidebar -->
+
+        </div>
+
+    </div><!-- End contents row -->
+
+</div><!-- End Content -->

@@ -1,0 +1,98 @@
+﻿@using Weitm.Modules.Membership.Models;
+@model LoginModel
+
+@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- Apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- Apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	
+	<title>Chain Touch Portal</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="~/Content/flat/css/bootstrap.min.css">
+	<!-- Bootstrap responsive -->
+	<link rel="stylesheet" href="~/Content/flat/css/bootstrap-responsive.min.css">
+	<!-- icheck -->
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/icheck/all.css">
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="~/Content/flat/css/style.css">
+	<!-- Color CSS -->
+	<link rel="stylesheet" href="~/Content/flat/css/themes.css">
+
+
+	<!-- jQuery -->
+	<script src="~/Content/flat/js/jquery.min.js"></script>
+	
+	<!-- Nice Scroll -->
+	<script src="~/Content/flat/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<!-- Validation -->
+	<script src="~/Content/flat/js/plugins/validation/jquery.validate.min.js"></script>
+	<script src="~/Content/flat/js/plugins/validation/additional-methods.min.js"></script>
+	<!-- icheck -->
+	<script src="~/Content/flat/js/plugins/icheck/jquery.icheck.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="~/Content/flat/js/bootstrap.min.js"></script>
+	<script src="~/Content/flat/js/eakroko.js"></script>
+
+	<!--[if lte IE 9]>
+		<script src="~/Content/flat/js/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+	<![endif]-->
+	
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/Images/favicon.ico" />
+	<!-- Apple devices Homescreen icon -->
+	<link rel="apple-touch-icon-precomposed" href="~/Content/flat/img/apple-touch-icon-precomposed.png" />
+    <link href="~/Styles/style.css" rel="stylesheet" />
+</head>
+
+<body class="login theme-satblue" data-theme="theme-satblue">
+    <div class="wrapper">
+        <h1><a href="/">Chain Touch Portal</a></h1>
+        <div class="login-body">
+            <h2>Login</h2>
+            <form method="post" class="form-validate" id="test">
+                @Html.AntiForgeryToken()
+                <div class="control-group">
+                    <div class="email controls">
+                        <input type="text" name='UserName' id="UserName" placeholder="Email" class='input-block-level' data-rule-required="true">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="pw controls">
+                        <input type="password" name="Password" id="Password" placeholder="Password" class='input-block-level' data-rule-required="true">
+                    </div>
+                </div>
+                <div class="submit">
+                    <div class="remember">
+                        <input type="checkbox" name="RememberMe0" id="RememberMe0" class='icheck-me' data-skin="square" data-color="blue"> <label for="remember">Remember Me</label>
+                    </div>
+                    <input type="submit" value="Login" class='btn btn-primary'>
+                    <p class="error-message">@Html.ValidationSummary()</p>
+                </div>
+
+            </form>
+            @*<div class="forget">
+                <a href="/Account/Register/"><span>注册账号</span></a>
+            </div>*@
+        </div>
+    </div>
+    @Html.Partial("_CounterPartial")
+</body>
+
+</html>

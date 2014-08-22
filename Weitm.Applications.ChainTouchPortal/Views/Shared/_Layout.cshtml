@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Chain Touch Portal</title>
+    <meta name="description" content="Chain Touch System" />
+    <meta name="keywords" content="Chain Touch System" />
+	<meta name="author" content="joydragon" />
+	<link rel="stylesheet" href="~/Content/flat/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/Content/flat/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/jquery-ui/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/pageguide/pageguide.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/fullcalendar/fullcalendar.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/fullcalendar/fullcalendar.print.css" media="print">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/chosen/chosen.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/select2/select2.css">
+	<link rel="stylesheet" href="~/Content/flat/css/plugins/icheck/all.css">
+	<link rel="stylesheet" href="~/Content/flat/css/style.css">
+	<link rel="stylesheet" href="~/Content/flat/css/themes.css">
+	<script src="~/Content/flat/js/jquery.min.js"></script>
+	<script src="~/Content/flat/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="~/Content/flat/js/plugins/jquery-ui/jquery.ui.core.min.js"></script>
+	<script src="~/Content/flat/js/plugins/jquery-ui/jquery.ui.widget.min.js"></script>
+	<script src="~/Content/flat/js/plugins/jquery-ui/jquery.ui.mouse.min.js"></script>
+	<script src="~/Content/flat/js/plugins/jquery-ui/jquery.ui.draggable.min.js"></script>
+	<script src="~/Content/flat/js/plugins/jquery-ui/jquery.ui.resizable.min.js"></script>
+	<script src="~/Content/flat/js/plugins/jquery-ui/jquery.ui.sortable.min.js"></script>
+	<script src="~/Content/flat/js/plugins/touch-punch/jquery.touch-punch.min.js"></script>
+	<script src="~/Content/flat/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="~/Content/flat/js/bootstrap.min.js"></script>
+	<script src="~/Content/flat/js/plugins/vmap/jquery.vmap.min.js"></script>
+	<script src="~/Content/flat/js/plugins/vmap/jquery.vmap.world.js"></script>
+	<script src="~/Content/flat/js/plugins/vmap/jquery.vmap.sampledata.js"></script>
+	<script src="~/Content/flat/js/plugins/bootbox/jquery.bootbox.js"></script>
+	<script src="~/Content/flat/js/plugins/flot/jquery.flot.min.js"></script>
+	<script src="~/Content/flat/js/plugins/flot/jquery.flot.bar.order.min.js"></script>
+	<script src="~/Content/flat/js/plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="~/Content/flat/js/plugins/flot/jquery.flot.resize.min.js"></script>
+	<script src="~/Content/flat/js/plugins/imagesLoaded/jquery.imagesloaded.min.js"></script>
+	<script src="~/Content/flat/js/plugins/pageguide/jquery.pageguide.js"></script>
+	<script src="~/Content/flat/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+	<script src="~/Content/flat/js/plugins/chosen/chosen.jquery.min.js"></script>
+	<script src="~/Content/flat/js/plugins/select2/select2.min.js"></script>
+	<script src="~/Content/flat/js/plugins/icheck/jquery.icheck.min.js"></script>
+	<script src="~/Content/flat/js/eakroko.min.js"></script>
+	<script src="~/Content/flat/js/application.min.js"></script>
+	<script src="~/Content/flat/js/demonstration.js"></script>
+	<!--[if lte IE 9]>
+		<script src="~/Content/flat/js/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+	<![endif]-->
+    <link rel="shortcut icon" href="~/Images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" href="~/Images/favicon/apple-touch-icon.png" />
+    <link href="~/Styles/style.css" rel="stylesheet" />
+    @RenderSection("header",false)
+</head>
+
+<body class="theme-satblue">
+	@Html.Partial("_NavigationPartial")
+	<div class="container-fluid" id="content">
+        @RenderBody()
+        @Html.Partial("_FooterPartial")
+        @Html.Partial("_CounterPartial")
+	</div>
+    @RenderSection("footer",false)
+</body>
+</html>

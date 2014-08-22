@@ -1,0 +1,103 @@
+﻿@{
+    string dashboardClass = "";
+    string accountClass = "";
+    string newsClass = "";
+    string developerClass = "";
+    string industrialParkClass = "";
+    string propertyClass = "";
+    string cloudClass = "";
+    string websiteClass = "";
+    string aboutClass = "";
+}
+<div class="subnav">
+	<div class="subnav-title">
+		<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Favorite</span></a>
+	</div>
+	<ul class="subnav-menu">
+        <li class="@dashboardClass">
+            <a href="~/Main/">
+                Dashboard
+            </a>
+        </li>
+        @if (User.IsInRole("Administrators"))
+        {
+            <li class="@accountClass">
+                <a href="~/Accounts/">
+                    Accounts
+                </a>
+            </li>
+        }
+        @if (User.IsInRole("Administrators") || User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+        {
+            <li class="@newsClass">
+                <a href="~/Articles/">
+                    <span>News</span>
+                </a>
+            </li>
+        }
+        @if (User.IsInRole("Administrators"))
+        {
+            <li class="@developerClass">
+                <a href="~/Developers/">
+                    <span>Developers</span>
+                </a>
+            </li>
+        }
+        @if (User.IsInRole("Administrators"))
+        {
+            <li class="@industrialParkClass">
+                <a href="~/IndustrialParks/">
+                    <span>Industrial Parks</span>
+                </a>
+            </li>
+        }
+        @if (User.IsInRole("Administrators") || User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+        {
+            <li class="@propertyClass">
+                <a href="~/ManagedProperties/">
+                    <span>Properties</span>
+                </a>
+            </li>
+        }
+        @if (User.IsInRole("Administrators"))
+        {
+            <li class="@cloudClass">
+                <a href="~/Cloud/">
+                    <span>LBS Cloud</span>
+                </a>
+            </li>
+        }
+        @if (User.IsInRole("Administrators"))
+        {
+            <li class="@websiteClass">
+                <a href="~/WebSite/">
+                    <span>WebSite</span>
+                </a>
+            </li>
+        }
+        <li class="@aboutClass">
+            <a href="~/About/">
+                <span>About Us</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="subnav">
+	<div class="subnav-title">
+		<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Quick</span></a>
+	</div>
+	<ul class="subnav-menu">
+        @if (User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+        {
+            <li>
+                <a href="~/Account/EditProfile/">Edit Profile</a>
+            </li>
+        }
+        <li>
+			<a href="~/Account/ChangePassword/">Change Password</a>
+		</li>
+		<li>
+			<a href="~/Account/Logout/">Logout</a>
+		</li>
+	</ul>
+</div>

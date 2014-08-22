@@ -1,0 +1,44 @@
+﻿@using Weitm.Modules.Membership.Models;
+@model RegisterModel
+@section header{
+    <style>
+        .error {
+            color: yellow;
+        }
+    </style>
+}
+@section footer{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var loginUrl = '@Url.Content("~/Account/Login/?ReturnUrl=" + ViewBag.ReturnUrl)';
+            $("#login-button").click(function () {
+                window.location = loginUrl;
+            });
+            $("#register-form").validate();
+        });
+    </script>
+}
+<div id="login-wrapper">
+    <div id="register-window">
+        <div class="inner">
+            <form method="post" id="register-form">
+                @Html.AntiForgeryToken()
+                <p>USERNAME</p>
+                <input type="email" name="Email" class=" required text" />
+                <p>PASSSWORD</p>
+                <input type="password" name="Password" class="required password" />
+                <p>CONFIRM PASSWORD</p>
+                <input type="password" name="ConfirmPassword" class="required password" />
+                <div class="buttons">
+                    <button type="submit" class="submit-button">SUBIMIT</button>
+                    <button id="login-button" class="submit-button">RETURN LOGIN</button>
+                </div>
+
+                <div class="error">
+                    @ViewBag.Message
+                    @Html.ValidationSummary()
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

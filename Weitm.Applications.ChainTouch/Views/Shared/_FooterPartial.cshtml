@@ -1,0 +1,76 @@
+﻿@using Weitm.Modules.Article.Models;
+
+@*@Html.Partial("_PartnersPartial")*@
+
+<footer id="footer-wrapper">
+    <div id="footer" class="container">
+        <div class="row">
+            <div class="span3">
+                <section class="widget">
+                    <h3 class="title">About Chain Touch</h3>
+                    <div class="textwidget">
+                        <p>Chain Touch is a great company... Chain Touch is a great company...  Chain Touch is a great company...  Chain Touch is a great company... </p>
+                        <p>Chain Touch is a great company...  Chain Touch is a great company... Chain Touch is a great company... </p>
+                    </div>
+                </section>
+            </div>
+            <div class="span3">
+                <section class="widget">
+                    <h3 class="title">Recent Posts</h3>
+                    <ul>
+                        @{
+                            var recentArticles = Article.Get(5);
+                        }
+                        @foreach(var article in recentArticles)
+                        {
+                        <li>
+                            <a href="~/MarketNews/Show/@article.Id/" title="@article.Subject">@article.Subject</a>
+                        </li>
+                        }
+                    </ul>
+                </section>
+            </div>
+            <div class="span3">
+                <section class="widget">
+                    <h3 class="title">Hottest Properties</h3>
+                    <ul>
+                        @{
+                            var hottestArticles = Article.GetOrderByHits(5);
+                        }
+                        @foreach (var article in hottestArticles)
+                        {
+                            <li>
+                                <a href="~/MarketNews/Show/@article.Id/" title="@article.Subject">@article.Subject</a>
+                            </li>
+                        }
+                    </ul>
+                </section>
+            </div>
+            <div class="span3">
+                <section class="widget">
+                    <h3 class="title">Contact Info</h3>
+                    <div class="textwidget">
+                        <p>
+                            Green Land Centre,<br>
+                            Shanghai, China
+                        </p>
+                        <p>Phone: 1366 1739 0798</p>
+                        <p>Email: <a href="mailto:jason.chen@chaintouch.com">jason.chen@chaintouch.com</a></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div id="footer-bottom" class="container">
+        <div class="row">
+            <div class="span6">
+                <p class="copyright">Copyright &copy; 2014. Chain Touch All Rights Reserved.</p>
+            </div>
+            <div class="span6">
+                <p class="designed-by">Powered by <a target="_blank" href="http://wei.tm/">WEI.TM</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Bottom -->
+</footer>

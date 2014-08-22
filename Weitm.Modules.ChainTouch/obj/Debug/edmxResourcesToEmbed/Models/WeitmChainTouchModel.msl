@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WeitmChainTouchModelStoreContainer" CdmEntityContainer="WeitmChainTouchEntities">
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="WeitmChainTouchModel.Contact">
+        <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Contact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TargetId" ColumnName="TargetId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="Landline" ColumnName="Landline" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Developers">
+      <EntityTypeMapping TypeName="WeitmChainTouchModel.Developer">
+        <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Developer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="DevelopedGfaInChina" ColumnName="DevelopedGfaInChina" />
+          <ScalarProperty Name="NumberOfProjectsInChina" ColumnName="NumberOfProjectsInChina" />
+          <ScalarProperty Name="ChinaHeadquarterAddress" ColumnName="ChinaHeadquarterAddress" />
+          <ScalarProperty Name="BriefIntroduction" ColumnName="BriefIntroduction" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IndustrialParks">
+      <EntityTypeMapping TypeName="WeitmChainTouchModel.IndustrialPark">
+        <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_IndustrialPark">
+          <ScalarProperty Name="EastLongitude" ColumnName="EastLongitude" />
+          <ScalarProperty Name="NorthLatitude" ColumnName="NorthLatitude" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Municipal" ColumnName="Municipal" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+          <ScalarProperty Name="JurisdictionAreaSize" ColumnName="JurisdictionAreaSize" />
+          <ScalarProperty Name="PillarIndustry" ColumnName="PillarIndustry" />
+          <ScalarProperty Name="MncPresence" ColumnName="MncPresence" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="WeitmChainTouchModel.Picture">
+        <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Picture">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TargetId" ColumnName="TargetId" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Properties">
+      <EntityTypeMapping TypeName="WeitmChainTouchModel.Property">
+        <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Property">
+          <ScalarProperty Name="EastLongitude" ColumnName="EastLongitude" />
+          <ScalarProperty Name="NorthLatitude" ColumnName="NorthLatitude" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SponsorId" ColumnName="SponsorId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Municipal" ColumnName="Municipal" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="TotalLandSize" ColumnName="TotalLandSize" />
+          <ScalarProperty Name="GrossFloorArea" ColumnName="GrossFloorArea" />
+          <ScalarProperty Name="LeasableArea" ColumnName="LeasableArea" />
+          <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="PropertyStructure" ColumnName="PropertyStructure" />
+          <ScalarProperty Name="NumberOfFloors" ColumnName="NumberOfFloors" />
+          <ScalarProperty Name="ClearHeight" ColumnName="ClearHeight" />
+          <ScalarProperty Name="ColumnSpace" ColumnName="ColumnSpace" />
+          <ScalarProperty Name="ColumnSpaceWidth" ColumnName="ColumnSpaceWidth" />
+          <ScalarProperty Name="ColumnSpaceHeight" ColumnName="ColumnSpaceHeight" />
+          <ScalarProperty Name="PowerCapacity" ColumnName="PowerCapacity" />
+          <ScalarProperty Name="FloorLoading" ColumnName="FloorLoading" />
+          <ScalarProperty Name="Rent" ColumnName="Rent" />
+          <ScalarProperty Name="ManagementFee" ColumnName="ManagementFee" />
+          <ScalarProperty Name="ManagementFeeIncludedInRent" ColumnName="ManagementFeeIncludedInRent" />
+          <ScalarProperty Name="ContactIds" ColumnName="ContactIds" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favorites">
+      <EntityTypeMapping TypeName="WeitmChainTouchModel.Favorite">
+        <MappingFragment StoreEntitySet="T_Weitm_ChainTouch_Favorite">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

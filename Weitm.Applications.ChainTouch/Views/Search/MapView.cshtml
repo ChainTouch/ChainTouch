@@ -1,0 +1,100 @@
+﻿<!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Properties Map View Searching Result</span></h1>
+            <p>Properties Searching Result Map View in Simple Layout</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents lisitng-grid-layout">
+    
+        <div class="row">
+            <div class="span8 main-wrap">
+                <div class="row">
+                    <div class="inner-wrapper" style="margin-left:30px;margin-bottom:0px;">
+                        <p>Key Word: <strong>factories</strong></p>
+                        <p>Search Conditions:
+                            <span class="search-tile">10-20M</span>
+                            <span class="search-tile">Tall</span>
+                            <span class="search-tile">Shanghai</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- Main Content -->
+                <div class="main" style="margin-top:0px;">
+                    <div class="inner-wrapper" style="padding:0px;">
+                        <div class="map-container clearfix">
+                            <div id="map_canvas"></div>
+
+                            <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
+                            <script type="text/javascript">
+                                // 百度地图API功能
+                                var map = new BMap.Map("map_canvas");                        // 创建Map实例
+                                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);     // 初始化地图,设置中心点坐标和地图级别
+                                map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+                                map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+                                map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+                                map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+                                map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+                                map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+                            </script>
+
+                        </div>
+                        <section class="contact-details clearfix">
+                            <h3>xxx HouseWare</h3>
+                            <address>12345 songjiang,<br>Shanghai, China</address>
+                            <ul class="contacts-list">
+                                <li class="phone"> Phone: x-xxx-xxx-xxxx</li>
+                                <li class="mobile"> Mobile: xx-xxx-xxx</li>
+                                <li class="email"> Email: contact@wei.tm</li>
+                            </ul>
+                        </section>
+
+                    </div>
+                </div><!-- End Main Content -->
+
+            </div> <!-- End span9 -->
+            <!-- Sidebar -->
+            <div class="span4 sidebar-wrap" style="margin-left:0px;">
+
+                <aside class="sidebar">
+
+                    <section class="widget advance-search">
+                        <h4 class="title search-heading">Real Estate<i class="icon-search"></i></h4>
+                        <div class="as-form-wrap" style="height:656px;">
+                            <form class="advance-search-form clearfix" action="#" method="get">
+
+                                <div class="option-bar">
+                                    <img src="~/Images/Temp/search.jpg" />
+                                </div>
+                                <div class="option-bar">
+                                    <img src="~/Images/Temp/search.jpg" />
+                                </div>
+                                <div class="option-bar">
+                                    <img src="~/Images/Temp/search.jpg" />
+                                </div>
+                                <div class="option-bar">
+                                    <img src="~/Images/Temp/search.jpg" />
+                                </div>
+                                <div class="option-bar">
+                                    <img src="~/Images/Temp/search.jpg" />
+                                </div>
+                                <div class="option-bar">
+                                    <img src="~/Images/Temp/search.jpg" />
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </aside>
+
+            </div>
+
+            <!-- End Sidebar -->
+
+        </div><!-- End contents row -->
+
+    </div>
+<!-- End Content -->

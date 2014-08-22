@@ -1,0 +1,36 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@using Weitm.Modules.Membership;
+
+@model Property
+
+@{
+    var property = Model;
+    var userId = WebSecurity.GetUserId(User.Identity.Name);
+}
+
+<article class="property-item clearfix" style="padding: 0px; height: 80px; margin-bottom:0px;">
+    <figure style="width:100px;">
+        <a class="property-result-item" data-property-id="@property.Id" data-lat="@property.NorthLatitude" data-lon="@property.EastLongitude" title="@property.Address" style="cursor: pointer;width:100px; height: 80px;">
+            <img src="~/Images/property.jpg" alt="@property.Address" title="@property.Address" height="80" width="100" style="height:80px;width:100px;">
+        </a>
+    </figure>
+    <div class="detail">
+        <h5 class="price">
+            @property.Address
+            <a href="~/Property/Detail/@property.Id/" class="icon-arrow-right"></a>
+            @if (Favorite.Has(property.Id, userId))
+            {
+                <a class="icon-heart unfavorite-button" href="javscript:void(null);" data-property-id="@property.Id"></a>
+            }
+            else
+            {
+                <a class="icon-heart favorite-button" href="javscript:void(null);" data-property-id="@property.Id"></a>
+            }
+        </h5>
+        <p>·Rent: @property.Rent</p>
+        <p>·Leasable Area: @property.LeasableArea</p>
+        <p>·Total Land Size: @property.TotalLandSize</p>
+        <p>·Management Cost: @property.ManagementFee</p>
+    </div>
+</article>
+<div class="clearfix" style="clear:both;" />

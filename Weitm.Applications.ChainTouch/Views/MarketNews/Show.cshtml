@@ -1,0 +1,72 @@
+﻿@using Weitm.Modules.Article.Models;
+@model Article
+
+@{
+    
+}
+
+@section header{
+    <style>
+        .post-meta {
+            border:0px;
+        }
+    </style>
+}
+
+<!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Market News</span></h1>
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<div class="container contents single">
+    <div class="row">
+        <div class="span9 main-wrap">
+            <!-- Main Content -->
+            <div class="main">
+
+                <div class="inner-wrapper">
+                    <article class="">
+                        <header>
+                            <h3 class="post-title">@Model.Subject</h3>
+                            <div class="post-meta thumb-exist">
+                                <span> Posted on  <span class="date"> @Model.CreateTime.ToString("yyyy-MM-dd") </span></span>
+                                <span> by Chain Touch in  <a href="~/MarketNews/" title="Market News">Market News</a></span>
+                            </div>
+                        </header>
+                        @Html.Raw(Model.Content)
+
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style" style="float:right;">
+                            <span class="jiathis_txt">分享到：</span>
+                            <a class="jiathis_button_icons_1"></a>
+                            <a class="jiathis_button_icons_2"></a>
+                            <a class="jiathis_button_icons_3"></a>
+                            <a class="jiathis_button_icons_4"></a>
+                            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                            <a class="jiathis_counter_style"></a>
+                        </div>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1406021010510124" charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                    </article>
+
+                </div>
+
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <div class="span3 sidebar-wrap">
+
+            @Html.Partial("_SidebarPartial")
+
+        </div>
+
+
+    </div><!-- End contents row -->
+
+</div><!-- End Content -->

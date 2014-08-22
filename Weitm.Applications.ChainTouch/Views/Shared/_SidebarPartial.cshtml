@@ -1,0 +1,88 @@
+﻿@using Weitm.Modules.Article.Models;
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <section class="widget">
+        <form role="search" method="get" id="searchform" class="searchform" action="#">
+            <div>
+                <label class="screen-reader-text" for="s">Search for:</label>
+                <input type="text" value="" name="s" id="s">
+                <input type="submit" id="searchsubmit" value="Search">
+            </div>
+        </form>
+    </section>
+    <section class="widget">
+        <h3 class="title">Featured Properties</h3>
+        <ul class="featured-properties">
+            <li>
+                <figure>
+                    <a href="#">
+                        <img src="~/Images/featured-widget-image.jpg" alt="property 10">
+                    </a>
+                </figure>
+                <h4><a href="#" title="123456 Southwest 39th Shanghai">123456 Southwest 39th Shanghai</a></h4>
+                <p>This is th introduction… <a href="#">Read More</a></p>
+                <span class="price">$x,xxx Per Month</span>
+            </li>
+            <li>
+                <figure>
+                    <a href="#">
+                        <img src="~/Images/featured-widget-image.jpg" alt="property 10">
+                    </a>
+                </figure>
+                <h4><a href="#" title="123456 Southwest 39th Shanghai">123456 Southwest 39th Shanghai</a></h4>
+                <p>This is th introduction… <a href="#">Read More</a></p>
+                <span class="price">$x,xxx Per Month</span>
+            </li>
+        </ul>
+    </section><section class="widget">
+        <h3 class="title">Categories</h3>
+        <ul>
+            <li class="cat-item cat-item-6">
+                <a href="~/Developer/" title="Developer">Developer</a>
+            </li>
+            <li class="cat-item cat-item-2">
+                <a href="~/IndutrialPark/" title="IndutrialParks">IndutrialPark</a>
+            </li>
+        </ul>
+    </section>
+    <section class="widget">
+        <h3 class="title">Recent Posts</h3>
+        <ul>
+            @{
+                var recentArticles = Article.Get(5);
+            }
+            @foreach (var article in recentArticles)
+            {
+                <li>
+                    <a href="~/MarketNews/Show/@article.Id/" title="@article.Subject">@article.Subject</a>
+                </li>
+            }
+        </ul>
+    </section>
+    @*<section class="widget">
+        <h3 class="title">Recent Comments</h3>
+        <ul id="recentcomments">
+            <li class="recentcomments">
+                <a href="#">Administrator</a> on
+                <a href="#">The Post With Image Format</a>
+            </li>
+            <li class="recentcomments">
+                <a href="#">Administrator</a> on
+                <a href="#">The Post With Image Format</a>
+            </li>
+            <li class="recentcomments">
+                <a href="#">Administrator</a> on
+                <a href="#">The Post With Image Format</a>
+            </li>
+            <li class="recentcomments">
+                <a href="#">Administrator</a> on
+                <a href="#">The Post With Image Format</a>
+            </li>
+            <li class="recentcomments">
+                <a href="#">Administrator</a> on
+                <a href="#">The Post With Image Format</a>
+            </li>
+        </ul>
+    </section>*@
+</aside><!-- End Sidebar -->

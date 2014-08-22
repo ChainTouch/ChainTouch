@@ -1,0 +1,12 @@
+﻿*{font-family:微软雅黑;}
+#navigation .user .dropdown > a { padding-bottom:13px;}
+h1 a{ font-size:36px !important;}
+.remember { color: black; }
+.theme-grey.login { background: url(/images/bg_grid.png) repeat repeat #2C5E7B; }
+.error-message { clear:both; color:red;padding-top:10px;}
+.validation-summary-errors { color: red; }
+.validation-summary-errors li { list-style:none;}
+.validation-summary-errors ul { margin-left:0px;}
+#navigation #brand {
+background: url("/Images/logo.png") no-repeat;
+}

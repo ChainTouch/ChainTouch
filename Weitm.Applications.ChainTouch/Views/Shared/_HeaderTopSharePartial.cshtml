@@ -1,0 +1,54 @@
+﻿@using Weitm.Modules.Membership;
+@using Weitm.Modules.ChainTouch.Models;
+@{
+    var userId = WebSecurity.GetUserId(User.Identity.Name);
+}
+
+<div id="header-top" class="clearfix">
+    <h2 id="contact-email">
+        <i class="email"></i> Email us at : <a href="mailto:jason.chen@chaintouch.com">jason.chen@chaintouch.com</a>
+    </h2>
+    <!-- Social Navigation -->
+    <ul class="account_panel clearfix">
+        @if(Request.IsAuthenticated)
+        {  
+        <li>
+            @User.Identity.Name
+        </li>
+        <li>
+            <a href="~/Account/LogOff/">Log Off</a>
+        </li>
+        }
+        else
+        {
+        <li>
+            <a href="~/Account/Login/">Login</a>
+        </li>
+        <li>
+            <a href="~/Account/Register/">Register</a>
+        </li>
+        }
+        @if (User.IsInRole("Administrators") || User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+        {
+        <li>
+            <a href="/ChainTouchPortal/">Manage</a>
+        </li>
+        }
+        @if(Request.IsAuthenticated)
+        {
+            var count = Favorite.FindByUserId(userId).Count();
+            if(count>0)
+            {
+                <li><a href="~/Contrast/"><span class="icon-shopping-cart"></span>(@count)</a></li>
+            }
+            else
+            {
+                <li><a href="~/Contrast/"><span class="icon-shopping-cart"></span></a></li>
+            }
+        }
+        else
+        {
+            <li><a href="~/Contrast/"><span class="icon-shopping-cart"></span></a></li>
+        }
+    </ul>
+</div>

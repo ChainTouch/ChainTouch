@@ -1,0 +1,234 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@using Weitm.Modules.Article.Models;
+
+@model IndustrialPark
+
+@{
+    var properties = Model.Properties.Take(4);
+    var articles = Article.Get(5);
+}
+
+@section header{
+     <style type="text/css">
+        .listing-layout article h2 { margin-left:20px;}
+     </style>
+ }
+
+<!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Industrial Park Detail</span></h1>
+            <p>@Model.Name</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents lisitng-grid-layout">
+
+    <div class="row">
+
+        <div class="span6 main-wrap">
+
+            <!-- Main Content -->
+            <div class="main">
+
+                <section class="listing-layout">
+                    <h3 class="title-heading">Industrial Park</h3>
+
+                    <div class="small-arrow-list">
+                        <ul>
+                            @foreach (var item in articles)
+                            {
+                                <li><a href="~/MarketNews/Show/@item.Id">@item.Subject</a></li>
+                            }
+                        </ul>
+                    </div>
+                </section>
+
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <div class="span6 sidebar-wrap">
+            <div class="listing-slider">
+                <span class="format-icon gallery"></span>
+
+                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                    <ul class="slides">
+                        <li class="clone">
+                            <a href="~/Content/realhomes/images/temp-images/n2.jpg" title="" class="swipebox">
+                                <img src="~/Content/realhomes/images/temp-images/n2.jpg" alt="Chair One">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Content/realhomes/images/temp-images/n3.jpg" title="" class="swipebox">
+                                <img src="~/Content/realhomes/images/temp-images/n3.jpg" alt="Chair Three">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Content/realhomes/images/temp-images/n4.jpg" title="" class="swipebox">
+                                <img src="~/Content/realhomes/images/temp-images/n4.jpg" alt="Chair Two">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Content/realhomes/images/temp-images/n5.jpg" title="" class="swipebox">
+                                <img src="~/Content/realhomes/images/temp-images/n5.jpg" alt="Chair One">
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <ul class="flex-direction-nav">
+                    <li><a class="flex-prev" href="#">Previous</a></li>
+                    <li><a class="flex-next" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- End contents row -->
+    <div class="row">
+
+        <div class="span8 main-wrap">
+            <section class="listing-layout clearfix">
+                <h3 class="title-heading">Our Properties</h3>
+            </section>
+            <div class="property-items-container clearfix ">
+                @foreach(var property in properties)
+                {
+                <article class="property-item clearfix">
+                    <h4><a href="~/Property/Detail/@property.Id/" title="@property.Name">@property.Name</a></h4>
+                    <figure>
+                        <a href="~/Property/Detail/@property.Id/" title="12345 Southwest 39th Shanghai">
+                            <img src="/ChainTouch/Images/property.jpg" alt="12345 Southwest 39th Shanghai" title="12345 Southwest 39th Shanghai">
+                        </a>
+                        <figcaption>HOT</figcaption>
+                    </figure>
+                    <div class="detail">
+                        <h5 class="price">@property.Name<small>@property.Type.ToUpper()</small></h5>
+                        <p>@property.Name</p>
+                        <a class="more-details" href="~/Property/Detail/@property.Id/">More Details <i class="icon-caret-right"></i></a>
+                    </div>
+                    <div class="property-meta">
+                        <span><i class="icon-area"></i>@Model.JurisdictionAreaSize&nbsp;</span>
+                        <span><i class="icon-area"></i>&nbsp;@Model.Municipal</span>
+                        <span><i class="icon-area"></i>&nbsp;Contact</span>
+                        <span><i class="icon-area"></i>&nbsp;Discounts</span>
+                    </div>
+                </article>
+                }
+            </div>
+        </div> <!-- End span9 -->
+
+        <div class="span4 sidebar-wrap">
+            <section class="listing-layout clearfix">
+                <h3 class="title-heading">Property News</h3>
+            </section>
+            <div >
+                <section class="listing-layout clearfix">
+                    <article>
+                        <h2><span>Property</span> News</h2>
+                    </article>
+                    <div class="small-arrow-list">
+                        <ul>
+                            @foreach (var item in articles)
+                            {
+                                <li><a href="~/MarketNews/Show/@item.Id">@item.Subject</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <article>
+                        <h2><span>Property</span> News</h2>
+                    </article>
+                    <div class="small-arrow-list">
+                        <ul>
+                            @foreach (var item in articles)
+                            {
+                                <li><a href="~/MarketNews/Show/@item.Id">@item.Subject</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <article>
+                        <h2><span>Property</span> News</h2>
+                    </article>
+                    <div class="small-arrow-list">
+                        <ul>
+                            @foreach (var item in articles)
+                            {
+                                <li><a href="~/MarketNews/Show/@item.Id">@item.Subject</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <article>
+                        <h2><span>Property</span> News</h2>
+                    </article>
+                    <div class="small-arrow-list">
+                        <ul>
+                            @foreach (var item in articles)
+                            {
+                                <li><a href="~/MarketNews/Show/@item.Id">@item.Subject</a></li>
+                            }
+                        </ul>
+                    </div>
+                </section>
+</div>
+        </div>
+
+</div><!-- End contents row -->
+
+    <div class="row">
+        <section class="widget advance-search">
+            <h4 class="title search-heading">Find Your Property<i class="icon-search"></i></h4>
+            <div class="as-form-wrap">
+                <form class="advance-search-form clearfix" action="#" method="get">
+
+                    <div class="option-bar">
+                        <label>Type</label>
+                        <span class="selectwrap">
+                            <select name="location" id="select-location" class="search-select">
+                                <option value="any" selected="selected">Any</option>
+                                <option value="miami">Factory</option>
+                                <option value="newyork">Warehouse</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="option-bar">
+                        <label>Location</label>
+                        <span class="selectwrap">
+                            <input type="text" />
+                        </span>
+                    </div>
+                    <div class="option-bar">
+                        <label>&nbsp;</label>
+                        <input type="submit" value="Search" class=" real-btn btn">
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="overview">
+            <div class="map-wrap clearfix">
+                <span class="map-label">Property Map</span>
+                <div id="property_map">
+
+                </div>
+
+                <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
+                <script type="text/javascript">
+                    // 百度地图API功能
+                    var map = new BMap.Map("property_map");                        // 创建Map实例
+                    map.centerAndZoom(new BMap.Point(@Model.EastLongitude, @Model.NorthLatitude), 11);     // 初始化地图,设置中心点坐标和地图级别
+                    map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+                    map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+                    map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+                    map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+                    map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+                    map.setCurrentCity("@Model.Province");          // 设置地图显示的城市 此项是必须设置的
+                </script>
+            </div>
+        </section>
+
+    </div>
+</div><!-- End Content -->

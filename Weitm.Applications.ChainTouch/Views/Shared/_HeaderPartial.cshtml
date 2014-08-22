@@ -1,0 +1,81 @@
+﻿@{
+    string action = ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
+    string controller = ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();
+
+    string active = "current-menu-item current_page_item";
+    
+    string homeCss = "";
+    string newsCss = "";
+    string parkCss = "";
+    string propertyCss = "";
+    string developerCss = "";
+    
+    switch (controller)
+    {
+        case "Home":
+            homeCss = active;
+            break;
+        case "MarketNews":
+            newsCss = active;
+            break;
+        case "IndustrialPark":
+            parkCss = active;
+            break;
+        case "Property":
+            propertyCss = active;
+            break;
+        case "Developer":
+            developerCss = active;
+            break;
+    }
+} 
+
+<!-- Start Header -->
+<div class="header-wrapper">
+    <div class="container">
+
+        @Html.Partial("_HeaderTopSharePartial")
+        <!-- Start Header Container -->
+        <header id="header" class="clearfix">
+
+            <!-- Logo -->
+            <div id="logo">
+                <a title="Chain Touch" href="~/Home/">
+                    <img src="~/Images/logo.png" alt="Chain Touch">
+                </a>
+            </div>
+
+            <div class="menu-and-contact-wrap">
+                <!-- Start Main Menu-->
+                <nav class="main-menu">
+                    <div class="menu-main-menu-container">
+                        <ul id="menu-main-menu" class="clearfix">
+                            <li class="@homeCss">
+                                <a href="~/Home/">Home</a>
+                            </li>
+                            <li class="@propertyCss">
+                                <a href="~/Property/Search/">Property</a>
+                            </li>
+                            <li class="@newsCss">
+                                <a href="~/MarketNews/">Market News</a>
+                            </li>
+                            <li class="@parkCss">
+                                <a href="~/IndustrialPark/">Industrial Park</a>
+                            </li>
+                            <li class="@developerCss">
+                                <a href="~/Developer/">Developer</a>
+                            </li>
+                            <li>
+                                <a href="~/Academy/">Academy</a>
+                            </li>
+                            <li>
+                                <a href="~/Data/">Data</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav><!-- End Main Menu -->
+            </div><!-- End .menu-and-contact-wrap -->
+        </header>
+    </div> <!-- End Header Container -->
+</div><!-- End Header -->

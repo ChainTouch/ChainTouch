@@ -1,0 +1,172 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@{
+
+}
+<div id="left">
+    @Html.Partial("_SidebarPartial")
+</div>
+<div id="main">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="pull-left">
+                <h1>Properties</h1>
+            </div>
+        </div>
+        <div class="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="~/">Chain Touch Portal</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="~/">Properties</a>
+                </li>
+            </ul>
+            <div class="close-bread">
+                <a href="#"><i class="icon-remove"></i></a>
+            </div>
+        </div>
+
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <h3><i class="icon-edit"></i> Create</h3>
+                    </div>
+                    <div class="box-content">
+                        <form action="#" method="POST" class='form-horizontal'>
+                            <div class="control-group">
+                                <label for="Name" class="control-label">Name</label>
+                                <div class="controls">
+                                    <input type="text" name="Name" id="Name" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="Sponsor" class="control-label">Sponsor</label>
+                                <div class="controls">
+                                    <input type="text" name="Sponsor" id="Sponsor" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Property Type</label>
+                                <div class="controls">
+                                    <select name="Type" id="Type" class='input-large'>
+                                        <option value="warehouse">Warehouse</option>
+                                        <option value="workshop">Workshop</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Location</label>
+                                <div class="controls">
+                                    <select name="Province" id="Province" class='input-small'>
+                                        <option value="Province">Province</option>
+                                    </select>
+                                    <select name="District" id="District" class='input-small'>
+                                        <option value="District">District</option>
+                                    </select>
+                                    <select name="Municipal" id="Municipal" class='input-small'>
+                                        <option value="Municipal">Municipal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="Address" class="control-label">Address</label>
+                                <div class="controls">
+                                    <input type="text" name="Address" id="Address" class="input-xlarge" placeholder="Map Auto Locate">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="TotalLandSize" class="control-label">Total Land Size of Property</label>
+                                <div class="controls">
+                                    <input type="text" name="TotalLandSize" id="TotalLandSize" class="input-small" placeholder="">sqm
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="GrossFloorArea" class="control-label">Gross Floor Area of Property</label>
+                                <div class="controls">
+                                    <input type="text" name="GrossFloorArea" id="GrossFloorArea" class="input-small" placeholder="">sqm
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="LeasableArea" class="control-label">Leasable Area</label>
+                                <div class="controls">
+                                    <input type="text" name="LeasableArea" id="LeasableArea" class="input-small" placeholder="">sqm
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="AvailableDate" class="control-label">Available Date</label>
+                                <div class="controls">
+                                    <input type="text" name="AvailableDate" id="AvailableDate" class="input-small" placeholder="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="PropertyStructure" class="control-label">Property Structure</label>
+                                <div class="controls">
+                                    <input type="text" name="PropertyStructure" id="PropertyStructure" class="input-large" placeholder="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="ClearHeight" class="control-label">Clear Height</label>
+                                <div class="controls">
+                                    <input type="text" name="ClearHeight" id="ClearHeight" class="input-large" placeholder="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="ColumnSpace" class="control-label">Column Space</label>
+                                <div class="controls">
+                                    <input type="text" name="ColumnSpaceWidth" id="ColumnSpaceWidth" class="input-small" placeholder="">m  x   
+                                    <input type="text" name="ColumnSpaceHeight" id="ColumnSpaceHeight" class="input-small" placeholder="">m
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="PowerCapacity" class="control-label">Power Capacity</label>
+                                <div class="controls">
+                                    <input type="text" name="PowerCapacity" id="PowerCapacity" class="input-small" placeholder="">KVA
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="FloorLoading" class="control-label">Floor Loading</label>
+                                <div class="controls">
+                                    <input type="text" name="FloorLoading" id="FloorLoading" class="input-small" placeholder=""> Ton/sqm
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="Rent" class="control-label">Rent</label>
+                                <div class="controls">
+                                    ￥<input type="text" name="Rent" id="Rent" class="input-small" placeholder="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="ManagementFee" class="control-label">Property Management Fee</label>
+                                <div class="controls">
+                                    ￥<input type="text" name="ManagementFee" id="ManagementFee" class="input-small" placeholder="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Contact</label>
+                                <div class="controls">
+                                    <select name="Contact" id="Contact" class='input-large'>
+                                        <option value="Andy">Andy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="file" class="control-label">Pictures</label>
+                                <div class="controls">
+                                    <input type="file" name="Pictures" id="Pictures" class="input-block-level">
+                                    <span class="help-block">Only .jpg (Max Size: 100MB)</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

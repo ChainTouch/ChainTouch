@@ -1,0 +1,251 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@using Weitm.Modules.Membership;
+@{
+    var userId = WebSecurity.GetUserId(User.Identity.Name);
+    var properties = Favorite.FindByUserId(userId).OrderByDescending(p=>p.CreateTime).Select(p=>p.Property);
+    var count = properties.Count();
+    Property property1 = null;
+    Property property2 = null;
+    Property property3 = null;
+    Property property4 = null;
+    
+    if(count>0)
+    {
+        property1 = properties.ElementAt(0);
+    }
+    if (count > 1)
+    {
+        property2 = properties.ElementAt(1);
+    }
+    if (count > 2)
+    {
+        property3 = properties.ElementAt(2);
+    }
+    if (count > 3)
+    {
+        property4 = properties.ElementAt(3);
+    }
+}
+
+@section header{
+    <style type="text/css">
+        #contrast-table { width: 100%; color: #999; text-align:center;}
+            #contrast-table .name { margin:0;color:orange;}
+            #contrast-table .price { margin: 0; color:blue;}
+            #contrast-table .address { margin: 0; color:#999;}
+            #contrast-table .title { color: white; }
+            #contrast-table .col-1 { background: #f28f4d; border-color: white; }
+        .buttons { margin-top:20px; text-align:right;}
+        .real-btn { margin-bottom:0px; }
+    </style>
+}
+
+ <!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Contrast</span></h1>
+            <p>Checkout Properties</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container contents single">
+    <div class="row">
+        <table id="contrast-table">
+            <tr>
+                <th class="col-1">
+                    <img src="~/Images/Temp/20140709044816.jpg" style="width:100%;" />
+                </th>
+                @if(property1!=null)
+                {
+                <th>
+                    <p class="name">@property1.Name</p>
+                    <p class="price">￥@property1.Rent</p>
+                    <p class="address">@property1.Address</p>
+                    <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                </th>
+                }
+                else
+                {
+                <th>
+                    <p class="name">-</p>
+                    <p class="price">-</p>
+                    <p class="address">-</p>
+                    <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                </th>
+                }
+                @if(property2!=null)
+                {
+                <th>
+                    <p class="name">@property2.Name</p>
+                    <p class="price">￥@property2.Rent</p>
+                    <p class="address">@property2.Address</p>
+                    <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                </th>
+                }
+                else
+                {
+                <th>
+                    <p class="name">-</p>
+                    <p class="price">-</p>
+                    <p class="address">-</p>
+                    <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                </th>
+                }
+                @if(property3!=null)
+                {
+                <th>
+                    <p class="name">@property3.Name</p>
+                    <p class="price">￥@property3.Rent</p>
+                    <p class="address">@property3.Address</p>
+                    <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                </th>
+                }
+                else
+                {
+                    <th>
+                        <p class="name">-</p>
+                        <p class="price">-</p>
+                        <p class="address">-</p>
+                        <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                    </th>
+                }
+                @if(property4!=null)
+                {
+                <th>
+                    <p class="name">@property4.Name</p>
+                    <p class="price">￥@property4.Rent</p>
+                    <p class="address">@property4.Address</p>
+                    <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                </th>
+                }
+                else
+                {
+                    <th>
+                        <p class="name">-</p>
+                        <p class="price">-</p>
+                        <p class="address">-</p>
+                        <p><img src="~/Images/Temp/20140709044645.jpg" style="margin-top:20px;" /></p>
+                    </th>
+                }
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Size</span>
+                </td>
+                <td>approx. 10,0000 sqm <br /> workshop space <br /> including office area</td>
+                <td>approx. 10,0000 sqm <br /> workshop space <br /> including office area</td>
+                <td>approx. 10,0000 sqm <br /> workshop space <br /> including office area</td>
+                <td>approx. 10,0000 sqm <br /> workshop space <br /> including office area</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Location</span>
+                </td>
+                <td>Songjiang District <br /> and the vicintiy, <br />within Shanghai</td>
+                <td>Songjiang District <br /> and the vicintiy, <br />within Shanghai</td>
+                <td>Songjiang District <br /> and the vicintiy, <br />within Shanghai</td>
+                <td>Songjiang District <br /> and the vicintiy, <br />within Shanghai</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Building Structure</span>
+                </td>
+                <td>Single floor <br /> workshop with <br /> mezzanine as office, <br /> 130X60 m</td>
+                <td>Single floor <br /> workshop with <br /> mezzanine as office, <br /> 130X60 m</td>
+                <td>Single floor <br /> workshop with <br /> mezzanine as office, <br /> 130X60 m</td>
+                <td>Single floor <br /> workshop with <br /> mezzanine as office, <br /> 130X60 m</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Clear Height</span>
+                </td>
+                <td>6m+ for workshop</td>
+                <td>6m+ for workshop</td>
+                <td>6m+ for workshop</td>
+                <td>6m+ for workshop</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Floor Loading</span>
+                </td>
+                <td>TBC</td>
+                <td>TBC</td>
+                <td>TBC</td>
+                <td>TBC</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Activities</span>
+                </td>
+                <td>TBC</td>
+                <td>TBC</td>
+                <td>TBC</td>
+                <td>TBC</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title">Timing</span>
+                </td>
+                <td>Starting operation from 2014Q1</td>
+                <td>Starting operation from 2014Q1</td>
+                <td>Starting operation from 2014Q1</td>
+                <td>Starting operation from 2014Q1</td>
+            </tr>
+            <tr>
+                <td class="col-1">
+                    <span class="title"></span>
+                </td>
+                <td>
+                    @if(property1!=null)
+                    {
+                        <a href="~/Property/Detail/@property1.Id/" class="real-btn btn" target="_blank">Detail</a>
+                        <a href="~/Contrast/Remove/@property1.Id/" class="real-btn btn"><span class="icon-trash"></span></a>
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+                <td>
+                    @if (property2 != null)
+                    {
+                        <a href="~/Property/Detail/@property2.Id/" class="real-btn btn" target="_blank">Detail</a>
+                        <a href="~/Contrast/Remove/@property2.Id/" class="real-btn btn"><span class="icon-trash"></span></a>
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+                <td>
+                    @if (property3 != null)
+                    {
+                        <a href="~/Property/Detail/@property3.Id/" class="real-btn btn" target="_blank">Detail</a>
+                        <a href="~/Contrast/Remove/@property3.Id/" class="real-btn btn"><span class="icon-trash"></span></a>
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+                <td>
+                    @if (property4 != null)
+                    {
+                        <a href="~/Property/Detail/@property4.Id/" class="real-btn btn" target="_blank">Detail</a>
+                        <a href="~/Contrast/Remove/@property4.Id/" class="real-btn btn"><span class="icon-trash"></span></a>
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <button type="submit" class="real-btn btn" onclick="window.location = '@Url.Content("~/Contrast/Output/")';">OUTPUT</button>
+        </div>
+    </div>
+</div>

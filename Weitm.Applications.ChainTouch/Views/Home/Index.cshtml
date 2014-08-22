@@ -1,0 +1,204 @@
+﻿@using Weitm.Modules.Article.Models;
+
+@section header{
+    <style type="text/css">
+    .real-btn { margin:0 10px 10px 10px;}
+    .search-type { width:120px;}
+    .search-place { width:150px;}
+    .property-items-container { padding:0 10px;}
+    </style>
+}
+
+<div id="home-flexslider" class="clearfix">
+    <div class="flexslider">
+        <ul class="slides">
+            <li>
+                <div class="desc-wrap">
+                    <div class="slide-description">
+                        <h3><a href="#">Find Your Property</a></h3>
+                        <form method="post" action="~/Search/">
+                            <p>
+
+                                Find
+                                <select name="bedrooms" class="search-type">
+                                    <option value="1">Factory</option>
+                                    <option value="2" selected>Warehouse</option>
+                                </select>
+                                in
+                                <input type="text" class="search-place" />
+                                <input type="submit" value="Search" class="real-btn btn" />
+
+                            </p>
+                        </form>
+                        <a href="~/Property/Search/" class="know-more">Advanced Search</a>
+                    </div>
+                </div>
+                <a href="#"><img src="~/Images/Sliders/slider01.jpg" alt="15421 Southwest 39th Terrace"></a>
+            </li>
+            <li>
+                <div class="desc-wrap">
+                    <div class="slide-description">
+                        <h3><a href="#">Find Your Property</a></h3>
+                        <form method="post" action="~/Search/">
+                            <p>
+                                Find
+                                <select name="bedrooms" class="search-type">
+                                    <option value="1" selected>Factory</option>
+                                    <option value="2">Warehouse</option>
+                                </select>
+                                in
+                                <input type="text" class="search-place" />
+                                <input type="button" value="Search" class="real-btn btn" />
+                            </p>
+                        </form>
+                        <a href="~/Property/Search/" class="know-more">Advanced Search</a>
+                    </div>
+                </div>
+                <a href="#"><img src="~/Images/Sliders/slider03.jpg" alt="1200 Anastasia Avenue, Coral Gables"></a>
+            </li>
+        </ul>
+    </div>
+</div><!-- End Slider -->
+
+<div class="container contents full-width">
+    <div class="row">
+        <div class="span12">
+            <div class="main">
+
+                <section class="property-items">
+                    <div class="narrative">
+                        <h2>We are Offering the Best Properties</h2>
+                        <p>Look at our Latest listed properties and check out the facilities on them, We have already sold more than 5,000 properties and we are still going at very good pace. We would love you to look into these properties and we hope that you will find something match-able to your needs.</p>
+                    </div>
+                    
+                </section><!-- End .property-items -->
+                <section class="clearfix">
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="property-items-container clearfix">
+                                <article>
+                                    <h2><span>Featured Properties</span> Workshop</h2>
+                                </article>
+                                @for (int a = 1; a <= 2; a++)
+                                {
+                                        @Html.Partial("_PropertyItemPartial")
+                                }
+                                
+                            </div><!-- End .property-items-container -->
+                            <div class="pagination">
+                                <a href="#" class="real-btn current">1</a> <a href="#" class="real-btn">2</a>
+                            </div>
+                            <div class="property-items-container clearfix">
+                                <article>
+                                    <h2><span>Featured Properties</span> Warehouse</h2>
+                                </article>
+                                @for (int a = 1; a <= 2; a++)
+                                {
+                                    @Html.Partial("_PropertyItemPartial")
+                                }
+
+                            </div><!-- End .property-items-container -->
+                            <div class="pagination">
+                                <a href="#" class="real-btn current">1</a> <a href="#" class="real-btn">2</a>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <article>
+                                <h2><span>Market</span> News 1</h2>
+                            </article>
+                            <div class="small-arrow-list">
+                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[0])
+
+                                <p>
+                                    <a href="~/MarketNews/" class="real-btn btn-mini">View All</a>
+                                </p>
+                            </div>
+
+                            <article>
+                                <h2><span>Market</span> News 2</h2>
+                            </article>
+                            <div class="small-arrow-list">
+                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[1])
+                                <p>
+                                    <a href="~/MarketNews/" class="real-btn btn-mini">View All</a>
+                                </p>
+                            </div>
+
+                            <div class="listing-slider">
+                                <span class="format-icon gallery"></span>
+
+                                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                    <ul class="slides">
+                                        <li class="clone">
+                                            <a href="/ChainTouch/Content/realhomes/images/temp-images/n2.jpg" title="" class="swipebox">
+                                                <img src="/ChainTouch/Content/realhomes/images/temp-images/n2.jpg" alt="Chair One">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/ChainTouch/Content/realhomes/images/temp-images/n3.jpg" title="" class="swipebox">
+                                                <img src="/ChainTouch/Content/realhomes/images/temp-images/n3.jpg" alt="Chair Three">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/ChainTouch/Content/realhomes/images/temp-images/n4.jpg" title="" class="swipebox">
+                                                <img src="/ChainTouch/Content/realhomes/images/temp-images/n4.jpg" alt="Chair Two">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/ChainTouch/Content/realhomes/images/temp-images/n5.jpg" title="" class="swipebox">
+                                                <img src="/ChainTouch/Content/realhomes/images/temp-images/n5.jpg" alt="Chair One">
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <ul class="flex-direction-nav">
+                                    <li><a class="flex-prev" href="#">Previous</a></li>
+                                    <li><a class="flex-next" href="#">Next</a></li>
+                                </ul>
+                            </div>
+
+
+                            <article>
+                                <h2><span>Academy</span> Data</h2>
+                            </article>
+                            <div class="tick-list">
+                                <ul>
+                                    <li>Suspendisse a amet enim congue accumsan.</li>
+                                    <li>Integer aliquam suscipit tellus sagittis in.</li>
+                                    <li>Pellentesque sem elementum ornare.</li>
+                                    <li>Sed vel ante sit amet ipsum molestie adipiscing.</li>
+                                </ul>
+                                <p>
+                                    <a href="#" class="real-btn btn-mini">View All</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="featured-properties-carousel clearfix">
+                    <div class="narrative">
+                        <h3>Featured Properties</h3>
+                        <p>View a list of Featured Properties.</p>
+                    </div>
+                    <div class="carousel es-carousel-wrapper">
+                        <div class="es-carousel">
+                            <ul class="clearfix">
+                                @for(int b = 1; b <= 10;b ++)
+                                {
+                                <li>
+                                    @Html.Partial("_PropertyBriefPartial")
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="es-nav"><span class="es-nav-prev"></span><span class="es-nav-next"></span></div>
+                    </div>
+                </section><!-- End .eatured-properties-carousel -->
+            </div><!-- End .main -->
+        </div><!-- End span12 -->
+    </div><!-- End .row -->
+</div><!-- End .contents -->

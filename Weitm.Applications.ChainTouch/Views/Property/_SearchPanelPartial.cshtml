@@ -1,0 +1,230 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@using Weitm.Modules.CommonData.Models;
+
+@{
+    var properties = Property.Get().Take(8);
+    var provinces = GeoProvince.Get();
+}
+
+<div class="inner-wrapper" style="margin-bottom:0px;padding:0px;">
+    <section class="widget advance-search" style="margin-bottom:0px;height:200px;">
+        <ul class="nav nav-tabs" id="myTab" style="padding:0 0 0 0;height:37px;padding-left:10px;">
+            <li style="padding:0px;" class="active"><a href="#bydistrict" data-toggle='tab'>By District</a></li>
+            <li style="padding: 0px; "><a href="#bydistance" data-toggle='tab'>By Distance</a></li>
+        </ul>
+        <div class="advance-search-form clearfix">
+            <div class="tab-content">
+                <div class="tab-pane active" id="bydistrict">
+                    <form method="post" id="bydistrict-form">
+                        <input type="hidden" value="" name="sort-rent" class="sort-rent" />
+                        <input type="hidden" value="" name="sort-area" class="sort-area" />
+                        <input type="hidden" value="" name="sort-size" class="sort-size" />
+                        <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                        <div class="span4">
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistrict-province" name="Province" class="search-select">
+                                        <option value="any" selected="selected">Province - Any</option>
+                                        @foreach (var province in provinces)
+                                        {
+                                            <option value="@province.ProvinceCode">@province.ProvinceName</option>
+                                        }
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistrict-city" name="City" class="search-select">
+                                        <option value="any" selected="selected">City - Any</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistrict-district"  name="Disctrict" class="search-select">
+                                        <option value="any" selected="selected">District - Any</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistrict-type" name="Type" class="search-select">
+                                        <option value="any" selected="selected">Type - Any</option>
+                                        <option value="workshop">Workshop</option>
+                                        <option value="warehouse">Warehouse</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistrict-structure" name="Structure" class="search-select">
+                                        <option value="any" selected="selected">Structure - Any</option>
+                                        <option value="single-floor">Single Floor</option>
+                                        <option value="multi-floor">Multi Floor</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistrict-size" name="Size" class="search-select">
+                                        <option value="any" selected="selected">Size - Any</option>
+                                        <option value="1000-">under 1000㎡</option>
+                                        <option value="1000-1500">1000㎡-1500㎡</option>
+                                        <option value="1500-2000">1500㎡-2000㎡</option>
+                                        <option value="2000+">above 2000㎡</option>
+                                    </select>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="span4" style="width:40%;">
+                            <div class="option-bar">
+                                <div style="clear:both;">
+                                    <strong style="width:140px;text-align:right;display:inline-block;">Asking Rental:</strong>
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistrict-rental-down" name="RentalDown" style="width:50px;" />
+                                    </span>
+                                    -
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistrict-rental-up" name="RentalUp" style="width:50px;" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="option-bar">
+                                <div style="clear:both;">
+                                    <strong style="width:140px;text-align:right;display:inline-block;">Management Cost:</strong>
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistrict-cost-down" name="CostDown" style="width:50px;" />
+                                    </span>
+                                    -
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistrict-cost-up" name="CostUp" style="width:50px;" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="option-bar">
+                                <button id="bydistrict-button" type="button" name="action" value="bydistrict" class=" real-btn btn search-btn">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="bydistance" style="height:480px;">
+                    <form id="bydistance-form" method="post">
+                        <input type="hidden" value="" name="sort-rent" class="sort-rent" />
+                        <input type="hidden" value="" name="sort-area" class="sort-area" />
+                        <input type="hidden" value="" name="sort-size" class="sort-size" />
+                        <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                        <div class="span4">
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistance-province" name="Province" class="search-select">
+                                        <option value="any" selected="selected">Province - Any</option>
+                                        @foreach (var province in provinces)
+                                        {
+                                            <option value="@province.ProvinceCode">@province.ProvinceName</option>
+                                        }
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span>
+                                    <input id="bydistance-district" name="District" placeholder="District" type="text" class="" />
+                                </span>
+                            </div>
+
+
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistance-radius" name="Radius" class="search-select">
+                                        <option value="any" selected="selected">Radius - Any</option>
+                                        <option value="50-">under50km</option>
+                                        <option value="50-100">50km-100km</option>
+                                        <option value="100-150">100-150km</option>
+                                        <option value="150-200">150-200km</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="span4">
+
+
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistance-type" name="Type" class="search-select">
+                                        <option value="any" selected="selected">Type - Any</option>
+                                        <option value="workshop">Workshop</option>
+                                        <option value="warehouse">Warehouse</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistance-structure" name="Structure" class="search-select">
+                                        <option value="any" selected="selected">Structure - Any</option>
+                                        <option value="single-floor">Single Floor</option>
+                                        <option value="multi-floor">Multi Floor</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="option-bar">
+                                <span class="selectwrap">
+                                    <select id="bydistance-size" name="Size" class="search-select">
+                                        <option value="any" selected="selected">Size - Any</option>
+                                        <option value="1000-">under 1000㎡</option>
+                                        <option value="1000-1500">1000㎡-1500㎡</option>
+                                        <option value="1500-2000">1500㎡-2000㎡</option>
+                                        <option value="2000+">above 2000㎡</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="span4" style="width:40%;">
+                            <div class="option-bar">
+                                <div style="clear:both;">
+                                    <strong style="width:140px;text-align:right;display:inline-block;">Asking Rental:</strong>
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistance-rental-down" name="RentalDown" style="width:50px;" />
+                                    </span>
+                                    -
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistance-rental-up" name="RentalUp" style="width:50px;" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="option-bar">
+                                <div style="clear:both;">
+                                    <strong style="width:140px;text-align:right;display:inline-block;">Management Cost:</strong>
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistance-cost-down" name="CostDown" style="width:50px;" />
+                                    </span>
+                                    -
+                                    ￥
+                                    <span>
+                                        <input type="text" id="bydistance-cost-up" name="CostUp" style="width:50px;" />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="option-bar">
+                                <button id="bydistance-button" type="button" name="action" value="bydistance" class=" real-btn btn search-btn">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section style="height:40px;padding-top:10px;padding-left:10px;">
+        @*Search Conditions:
+        <span class="search-tile">none</span>*@
+    </section>
+</div>

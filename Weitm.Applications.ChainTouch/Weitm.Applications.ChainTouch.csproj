@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C825F966-0230-4694-AEA3-C273554404CB}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Weitm.Applications.ChainTouch</RootNamespace>
+    <AssemblyName>Weitm.Applications.ChainTouch</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Weitm.Modules.Membership">
+      <HintPath>..\..\..\..\..\bins\Weitm.Modules.Membership.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AcademyController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiDataController.cs" />
+    <Compile Include="Controllers\ContrastController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\DeveloperController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndustrialParkController.cs" />
+    <Compile Include="Controllers\MarketNewsController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Command\wkhtmltopdf.exe" />
+    <Content Include="Content\realhomes\css\bootstrap.css" />
+    <Content Include="Content\realhomes\css\font-awesome.min.css" />
+    <Content Include="Content\realhomes\css\main.css" />
+    <Content Include="Content\realhomes\css\responsive.css" />
+    <Content Include="Content\realhomes\css\_responsive-utilities.css" />
+    <Content Include="Content\realhomes\images\ajax-loader.gif" />
+    <Content Include="Content\realhomes\images\arrow-black.png" />
+    <Content Include="Content\realhomes\images\arrow-left.png" />
+    <Content Include="Content\realhomes\images\background-outer-wrapper.png" />
+    <Content Include="Content\realhomes\images\carousel-nav-left.png" />
+    <Content Include="Content\realhomes\images\carousel-nav-right.png" />
+    <Content Include="Content\realhomes\images\comment-detail-wrap-arrow.png" />
+    <Content Include="Content\realhomes\images\container-gradient.png" />
+    <Content Include="Content\realhomes\images\dropdown-arrow.png" />
+    <Content Include="Content\realhomes\images\dropdown-interest.png" />
+    <Content Include="Content\realhomes\images\dropdown-month.png" />
+    <Content Include="Content\realhomes\images\dropdown-year.png" />
+    <Content Include="Content\realhomes\images\favicon.png" />
+    <Content Include="Content\realhomes\images\feature-list-bullet.png" />
+    <Content Include="Content\realhomes\images\flex-arrow-left.png" />
+    <Content Include="Content\realhomes\images\flex-arrow-right.png" />
+    <Content Include="Content\realhomes\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\realhomes\images\glyphicons-halflings.png" />
+    <Content Include="Content\realhomes\images\icon-arrow-small.png" />
+    <Content Include="Content\realhomes\images\icon-arrow.png" />
+    <Content Include="Content\realhomes\images\icon-bath.png" />
+    <Content Include="Content\realhomes\images\icon-bed.png" />
+    <Content Include="Content\realhomes\images\icon-calculator.png" />
+    <Content Include="Content\realhomes\images\icon-disc-small.png" />
+    <Content Include="Content\realhomes\images\icon-disc.png" />
+    <Content Include="Content\realhomes\images\icon-fax.png" />
+    <Content Include="Content\realhomes\images\icon-gallery.png" />
+    <Content Include="Content\realhomes\images\icon-garage.png" />
+    <Content Include="Content\realhomes\images\icon-grid.png" />
+    <Content Include="Content\realhomes\images\icon-image.png" />
+    <Content Include="Content\realhomes\images\icon-lense.png" />
+    <Content Include="Content\realhomes\images\icon-link.png" />
+    <Content Include="Content\realhomes\images\icon-listing.png" />
+    <Content Include="Content\realhomes\images\icon-location.png" />
+    <Content Include="Content\realhomes\images\icon-mail.png" />
+    <Content Include="Content\realhomes\images\icon-mail2.png" />
+    <Content Include="Content\realhomes\images\icon-mobile.png" />
+    <Content Include="Content\realhomes\images\icon-phone.png" />
+    <Content Include="Content\realhomes\images\icon-phone2.png" />
+    <Content Include="Content\realhomes\images\icon-printer.png" />
+    <Content Include="Content\realhomes\images\icon-size.png" />
+    <Content Include="Content\realhomes\images\icon-tick.png" />
+    <Content Include="Content\realhomes\images\icon-video.png" />
+    <Content Include="Content\realhomes\images\icon-zoom.png" />
+    <Content Include="Content\realhomes\images\logo.png" />
+    <Content Include="Content\realhomes\images\play-btn.png" />
+    <Content Include="Content\realhomes\images\play-btn2.png" />
+    <Content Include="Content\realhomes\images\slider-nav-left.png" />
+    <Content Include="Content\realhomes\images\slider-nav-right.png" />
+    <Content Include="Content\realhomes\images\slideshow-nav-left.png" />
+    <Content Include="Content\realhomes\images\slideshow-nav-right.png" />
+    <Content Include="Content\realhomes\images\sticky-pin.png" />
+    <Content Include="Content\realhomes\images\temp-images\agent-john.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\agent-julia.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\featured-widget-image1.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\featured-widget-image2.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\logo-1.png" />
+    <Content Include="Content\realhomes\images\temp-images\logo-2.png" />
+    <Content Include="Content\realhomes\images\temp-images\logo-3.png" />
+    <Content Include="Content\realhomes\images\temp-images\logo-4.png" />
+    <Content Include="Content\realhomes\images\temp-images\logo-5.png" />
+    <Content Include="Content\realhomes\images\temp-images\n1.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\n2.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\n3.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\n4.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\n5.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\p1.jpeg" />
+    <Content Include="Content\realhomes\images\temp-images\p2.jpeg" />
+    <Content Include="Content\realhomes\images\temp-images\p3.jpeg" />
+    <Content Include="Content\realhomes\images\temp-images\page-head-image.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property-video-image.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property1.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property2.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property3.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property4.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property5.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property6.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property7.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\property8.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\slider-image.jpg" />
+    <Content Include="Content\realhomes\images\temp-images\slider-image2.jpg" />
+    <Content Include="Content\realhomes\images\widget-list-bullet.png" />
+    <Content Include="Content\realhomes\js\bootstrap.min.js" />
+    <Content Include="Content\realhomes\js\custom.js" />
+    <Content Include="Content\realhomes\js\elastislide\jquery.easing.1.3.js" />
+    <Content Include="Content\realhomes\js\elastislide\jquery.elastislide.js" />
+    <Content Include="Content\realhomes\js\flexslider\flexslider.css" />
+    <Content Include="Content\realhomes\js\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="Content\realhomes\js\flexslider\jquery.flexslider.js" />
+    <Content Include="Content\realhomes\js\jquery-twitterFetcher.js" />
+    <Content Include="Content\realhomes\js\jquery.form.js" />
+    <Content Include="Content\realhomes\js\jquery.isotope.min.js" />
+    <Content Include="Content\realhomes\js\jquery.jcarousel.min.js" />
+    <Content Include="Content\realhomes\js\jquery.min.js" />
+    <Content Include="Content\realhomes\js\jquery.selectbox.js" />
+    <Content Include="Content\realhomes\js\jquery.transit.min.js" />
+    <Content Include="Content\realhomes\js\jquery.validate.min.js" />
+    <Content Include="Content\realhomes\js\prettyphoto\jquery.prettyPhoto.js" />
+    <Content Include="Content\realhomes\js\prettyphoto\prettyPhoto.css" />
+    <Content Include="Content\realhomes\js\swipebox\img\icons.png" />
+    <Content Include="Content\realhomes\js\swipebox\img\loader.gif" />
+    <Content Include="Content\realhomes\js\swipebox\jquery.swipebox.min.js" />
+    <Content Include="Content\realhomes\js\swipebox\swipebox.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\avatar.jpg" />
+    <Content Include="Images\featured-widget-image.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\page-head-image.jpg" />
+    <Content Include="Images\partner.png" />
+    <Content Include="Images\post.jpg" />
+    <Content Include="Images\property.jpg" />
+    <Content Include="Images\Sliders\slider01.jpg" />
+    <Content Include="Images\Sliders\slider02.jpg" />
+    <Content Include="Images\Sliders\slider03.jpg" />
+    <Content Include="Images\Temp\20140709044645.jpg" />
+    <Content Include="Images\Temp\20140709044816.jpg" />
+    <Content Include="Images\Temp\contact.jpg" />
+    <Content Include="Images\Temp\search.jpg" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.validation\jquery-1.11.1.js" />
+    <Content Include="Scripts\jquery.validation\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery.validation\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery.validation\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery.validation\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery.validation\jquery.form.js" />
+    <Content Include="Scripts\jquery.validation\jquery.js" />
+    <Content Include="Scripts\jquery.validation\jquery.mockjax.js" />
+    <Content Include="Scripts\jquery.validation\jquery.simulate.js" />
+    <Content Include="Scripts\jquery.validation\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validation\require.js" />
+    <Content Include="Scripts\page-search.js" />
+    <Content Include="Styles\custom.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="UploadFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\realhomes\font\Descr.WD3" />
+    <Content Include="Content\realhomes\font\fontawesome-webfont.eot" />
+    <Content Include="Content\realhomes\font\fontawesome-webfont.eot%40" />
+    <Content Include="Content\realhomes\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\realhomes\font\fontawesome-webfont.woff" />
+    <Content Include="Content\realhomes\images\Descr.WD3" />
+    <Content Include="Content\realhomes\images\temp-images\Descr.WD3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_HeaderTopSharePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PartnersPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Developer\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PropertyItemPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PropertyBriefPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MarketNews\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MarketNews\_ImagePostPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MarketNews\_GalleryPostPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MarketNews\Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\IndustrialPark\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\IndustrialPark\_IndustrialParkItemPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\IndustrialPark\_SidebarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\_SidebarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Developer\_SidebarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Developer\_DeveloperItemPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Academy\_GalleryPostPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Academy\_ImagePostPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Academy\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Academy\Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\_GalleryPostPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\_ImagePostPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\ListView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\GridView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\MapView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\_PropertyGridItemPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\_SidebarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\_PropertyListItemPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\IndustrialPark\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contrast\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Advanced.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Weitm.Modules.ChainTouch\Weitm.Modules.ChainTouch.csproj">
+      <Project>{9231a80b-ed6d-4dfd-a7fd-7987fda7a699}</Project>
+      <Name>Weitm.Modules.ChainTouch</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_NewsListPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\AjaxLbsResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Developer\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Data\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Academy\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\_SearchPanelPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ApiData\BuildHtml.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Property\_SearchResultItemPartial.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3948</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3948/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

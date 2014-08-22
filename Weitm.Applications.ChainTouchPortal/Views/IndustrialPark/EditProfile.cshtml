@@ -1,0 +1,147 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@model IndustrialPark
+
+@{
+
+}
+<div id="left">
+    @Html.Partial("_SidebarPartial")
+</div>
+<div id="main">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="pull-left">
+                <h1>Industrial Parks</h1>
+            </div>
+        </div>
+        <div class="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="~/">Chain Touch Portal</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="~/">Industrial Parks</a>
+                </li>
+            </ul>
+            <div class="close-bread">
+                <a href="#"><i class="icon-remove"></i></a>
+            </div>
+        </div>
+
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <h3><i class="icon-edit"></i> Edit Profile</h3>
+                    </div>
+                    <div class="box-content">
+                        <form action="#" method="POST" class='form-horizontal'>
+                            <div class="control-group">
+                                <label for="Name" class="control-label">Full Name of Industrial Park</label>
+                                <div class="controls">
+                                    <input type="text" name="Name" id="Name" value="@Model.Name" class="input-xlarge">
+                                    <span class="help-block">Pls input the full name of your industrial park</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Location</label>
+                                <div class="controls">
+                                    <select name="Province" id="Province" class='input-small'>
+                                        <option value="@Model.Province">@Model.Province</option>
+                                    </select>
+                                    <select name="Municipal" id="Municipal" class='input-small'>
+                                        <option value="@Model.Municipal">@Model.Municipal</option>
+                                    </select>
+                                    <select name="District" id="District" class='input-small'>
+                                        <option value="@Model.District">@Model.District</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="Address" class="control-label">Address of Administrative Committee of Park</label>
+                                <div class="controls">
+                                    <input type="text" name="Address" id="Address" class="input-xlarge" value="@Model.Address" placeholder="Map Auto Locate">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="NorthLatitude" class="control-label">North Latitude</label>
+                                <div class="controls">
+                                    <input type="text" name="NorthLatitude" id="NorthLatitude" class="input-large" value="@Model.NorthLatitude" placeholder="Map Auto Locate">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="EastLongitude" class="control-label">East Longitude</label>
+                                <div class="controls">
+                                    <input type="text" name="EastLongitude" id="EastLongitude" class="input-large" value="@Model.EastLongitude" placeholder="Map Auto Locate">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Year of Establishment</label>
+                                <div class="controls">
+                                    <select name="EstablishedYear" id="EstablishedYear" class='input-small'>
+                                        <option value="@Model.EstablishedYear">@Model.EstablishedYear</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="JurisdictionAreaSize" class="control-label">Jurisdiction Area Size</label>
+                                <div class="controls">
+                                    <input type="text" name="JurisdictionAreaSize" id="JurisdictionAreaSize" value="@Model.JurisdictionAreaSize" class="input-small">sqkm
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="PillarIndustry" class="control-label">Pillar Industry</label>
+                                <div class="controls">
+                                    <input type="text" name="PillarIndustry" id="PillarIndustry" value="@Model.PillarIndustry" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="MncPresence" class="control-label">MNC Presence</label>
+                                <div class="controls">
+                                    <input type="text" name="MncPresence" id="MncPresence" value="@Model.MncPresence" class="input-xlarge">
+                                </div>
+                            </div>
+                            @*<div class="control-group">
+                                <label for="Contact" class="control-label">Contact</label>
+                                <div class="controls">
+                                    <input type="text" name="LastName" id="LastName" class="input-small" placeholder="Last Name">
+                                    <input type="text" name="FirstName" id="FirstName" class="input-small" placeholder="First Name">
+                                    <br/>
+                                    <input type="text" name="Department" id="Department" class="input-xlarge" placeholder="Department">
+                                    <br />
+                                    <input type="text" name="Title" id="Title" class="input-xlarge" placeholder="Title">
+                                    <br />
+                                    <input type="text" name="Mobile" id="Mobile" class="input-xlarge" placeholder="Mobile Phone">
+                                    <br />
+                                    <input type="text" name="Landline" id="Landline" class="input-xlarge" placeholder="Landline">
+                                    <br />
+                                    <input type="text" name="Email" id="Email" class="input-xlarge" placeholder="Email Address">
+                                </div>
+                            </div>*@
+                            <div class="control-group">
+                                <label for="Others" class="control-label">Other/Highlights</label>
+                                <div class="controls">
+                                    <textarea name="Others" id="Others" rows="10" class="input-block-level">@Model.Others</textarea>
+                                    <span class="help-block">Pls briefly introduce your industrial park and especially highlight the advantages of your park, which differentiate your park from the others.</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="Pictures" class="control-label">Pictures</label>
+                                <div class="controls">
+                                    <input type="file" name="Pictures" id="Pictures" class="input-block-level">
+                                    <span class="help-block">Only .jpg (Max Size: 100MB)</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

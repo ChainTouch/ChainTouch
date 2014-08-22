@@ -1,0 +1,16 @@
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Weitm.Modules.ChainTouch.dll.config
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Weitm.Modules.ChainTouch.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Weitm.Modules.ChainTouch.pdb
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\EntityFramework.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\EntityFramework.xml
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\EntityFramework.SqlServer.xml
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\obj\Debug\Weitm.Modules.ChainTouch.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\obj\Debug\Weitm.Modules.ChainTouch.pdb
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\obj\Debug\Weitm.Modules.ChainTouch.csprojResolveAssemblyReference.cache
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Newtonsoft.Json.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Newtonsoft.Json.xml
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Weitm.Modules.BaiduMap.dll
+D:\MyDocuments\WEI.TM\projects\applications\chain-touch\projects\ChainTouch\Weitm.Modules.ChainTouch\bin\Debug\Weitm.Modules.BaiduMap.pdb

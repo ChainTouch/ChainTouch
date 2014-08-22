@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WeitmChainTouchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TargetId" Type="Guid" />
+    <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Landline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Developer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PropertyType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DevelopedGfaInChina" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NumberOfProjectsInChina" Type="Int32" />
+    <Property Name="ChinaHeadquarterAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BriefIntroduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="IndustrialPark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Municipal" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="District" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EstablishedYear" Type="Int32" />
+    <Property Name="JurisdictionAreaSize" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PillarIndustry" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MncPresence" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Others" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NorthLatitude" Type="Double" />
+    <Property Name="EastLongitude" Type="Double" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TargetId" Type="Guid" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="SponsorId" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Municipal" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="District" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TotalLandSize" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="GrossFloorArea" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="LeasableArea" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AvailableDate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CompleteDate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PropertyStructure" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfFloors" Type="Int32" />
+    <Property Name="ClearHeight" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ColumnSpace" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ColumnSpaceWidth" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ColumnSpaceHeight" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PowerCapacity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FloorLoading" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ManagementFee" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ManagementFeeIncludedInRent" Type="Boolean" />
+    <Property Name="ContactIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NorthLatitude" Type="Double" />
+    <Property Name="EastLongitude" Type="Double" />
+    <NavigationProperty Name="Favorites" Relationship="WeitmChainTouchModel.FavoriteProperty" FromRole="Property" ToRole="Favorite" />
+  </EntityType>
+  <EntityContainer Name="WeitmChainTouchEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contacts" EntityType="WeitmChainTouchModel.Contact" />
+    <EntitySet Name="Developers" EntityType="WeitmChainTouchModel.Developer" />
+    <EntitySet Name="IndustrialParks" EntityType="WeitmChainTouchModel.IndustrialPark" />
+    <EntitySet Name="Pictures" EntityType="WeitmChainTouchModel.Picture" />
+    <EntitySet Name="Properties" EntityType="WeitmChainTouchModel.Property" />
+    <EntitySet Name="Favorites" EntityType="WeitmChainTouchModel.Favorite" />
+    <AssociationSet Name="FavoriteProperty" Association="WeitmChainTouchModel.FavoriteProperty">
+      <End Role="Favorite" EntitySet="Favorites" />
+      <End Role="Property" EntitySet="Properties" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Favorite">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="PropertyId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="PropertyId" Type="Guid" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Property" Relationship="WeitmChainTouchModel.FavoriteProperty" FromRole="Favorite" ToRole="Property" />
+  </EntityType>
+  <Association Name="FavoriteProperty">
+    <End Type="WeitmChainTouchModel.Favorite" Role="Favorite" Multiplicity="*" />
+    <End Type="WeitmChainTouchModel.Property" Role="Property" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

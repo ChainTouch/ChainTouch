@@ -1,0 +1,53 @@
+﻿<!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Properties Grid Listing Searching Result</span></h1>
+            <p>Properties Listing Searching Result in Grid Layout</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents lisitng-grid-layout">
+    <div class="row">
+        <div class="span9 main-wrap">
+
+            <!-- Main Content -->
+            <div class="main">
+                <section class="listing-layout property-grid">
+
+                    <h3 class="title-heading">Listing</h3>
+
+                    <div class="view-type clearfix">
+                        <a class="list" href="~/Search/ListView/"></a>
+                        <a class="grid active" href="~/Search/GridView/"></a>
+                        <a class="map" href="~/Search/MapView/"></a>
+                    </div>
+
+                    <div class="list-container clearfix">
+                        @Html.Partial("_PropertyGridItemPartial")
+                        @Html.Partial("_PropertyGridItemPartial")
+                        @Html.Partial("_PropertyGridItemPartial")
+                        @Html.Partial("_PropertyGridItemPartial")
+                        @Html.Partial("_PropertyGridItemPartial")
+                        @Html.Partial("_PropertyGridItemPartial")
+                    </div>
+                    <div class="pagination">
+                        <a href="#" class="real-btn current">1</a>
+                        <a href="#" class="real-btn">2</a>
+                    </div>
+                </section>
+
+            </div><!-- End Main Content -->
+        </div> <!-- End span9 -->
+        <!-- Sidebar -->
+        <div class="span3 sidebar-wrap">
+
+           @Html.Partial("_SidebarPartial")
+
+        </div>
+
+    </div><!-- End contents row -->
+</div>
+<!-- End Content -->

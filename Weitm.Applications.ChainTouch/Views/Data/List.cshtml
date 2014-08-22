@@ -1,0 +1,41 @@
+﻿ <!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Data</span></h1>
+            <p>Check out data</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents single">
+    <div class="row">
+        <div class="span9 main-wrap">
+            <!-- Main Content -->
+            <div class="main">
+
+                <div class="inner-wrapper">
+                    @Html.Partial("_ImagePostPartial")
+                    @Html.Partial("_GalleryPostPartial")
+
+                    <div class="pagination">
+                        <a href="#" class="real-btn current">1</a>
+                        <a href="#" class="real-btn">2</a>
+                    </div>
+                </div>
+
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <div class="span3 sidebar-wrap">
+
+           @Html.Partial("_SidebarPartial")
+
+        </div>
+
+
+    </div><!-- End contents row -->
+
+</div><!-- End Content -->

@@ -1,0 +1,154 @@
+﻿@using Weitm.Modules.Article.Models;
+@{
+    var root = Category.GetCategoryByUniqueName("Market News");
+    var categories = root.GetChildCategories();
+}
+
+<!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>News</span></h1>
+            <p>Check out market updatest</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents single">
+    <div class="row">
+        <div class="span9 main-wrap">
+            <!-- Main Content -->
+            <div class="main">
+                
+                <div class="inner-wrapper">
+                    <div class="listing-slider">
+                        <span class="format-icon gallery"></span>
+
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                            <ul class="slides">
+                                <li class="clone">
+                                    <a href="~/Content/realhomes/images/temp-images/n2.jpg" title="" class="swipebox">
+                                        <img src="~/Content/realhomes/images/temp-images/n2.jpg" alt="Chair One">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Content/realhomes/images/temp-images/n3.jpg" title="" class="swipebox">
+                                        <img src="~/Content/realhomes/images/temp-images/n3.jpg" alt="Chair Three">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Content/realhomes/images/temp-images/n4.jpg" title="" class="swipebox">
+                                        <img src="~/Content/realhomes/images/temp-images/n4.jpg" alt="Chair Two">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Content/realhomes/images/temp-images/n5.jpg" title="" class="swipebox">
+                                        <img src="~/Content/realhomes/images/temp-images/n5.jpg" alt="Chair One">
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <ul class="flex-direction-nav">
+                            <li><a class="flex-prev" href="#">Previous</a></li>
+                            <li><a class="flex-next" href="#">Next</a></li>
+                        </ul>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="disc-list">
+                                @Html.Partial("_NewsListPartial", categories[0])
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="small-arrow-list">
+                                @Html.Partial("_NewsListPartial", categories[1])
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="tick-list">
+                                @Html.Partial("_NewsListPartial", categories[2])
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="arrow-list">
+                                @Html.Partial("_NewsListPartial", categories[3])
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="disc-list">
+                                @Html.Partial("_NewsListPartial", categories[4])
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="small-arrow-list">
+                                @Html.Partial("_NewsListPartial", categories[5])
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="tick-list">
+                                @Html.Partial("_NewsListPartial", categories[6])
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <article>
+                                <h2><span>Property</span> News</h2>
+                            </article>
+                            <div class="arrow-list">
+                                @Html.Partial("_NewsListPartial", categories[7])
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <div class="span3 sidebar-wrap">
+
+           @Html.Partial("_SidebarPartial")
+
+        </div>
+
+
+    </div><!-- End contents row -->
+
+</div><!-- End Content -->

@@ -1,0 +1,145 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@using Weitm.Modules.CommonData.Models;
+
+@{
+    var properties = Property.Get().Take(7);
+    var provinces = GeoProvince.Get();
+}
+
+@section header{
+    <style>
+        .option-bar {
+            width:100%;
+        }
+            .option-bar label {
+                float:left;
+                width:100px;
+                clear:left;
+            }
+
+        .option-bar {
+        }
+
+        .tab-content {
+            overflow: visible;
+        }
+        .myTab {
+            width: 100%;
+        }
+
+        .nav-tabs > li > a, .nav-tabs > li > a:hover {
+            border-bottom: 0px;
+        }
+
+        .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+            border-bottom: 0px;
+        }
+        .widget.advance-search .search-btn {
+            float:right;
+            margin-right:60px;
+        }
+        .icon-heart {
+            font-size: 16px;
+            float: right;
+            margin-right:5px;
+        }
+        .icon-arrow-right {
+            font-size: 16px;
+            float: right;
+            margin-right: 5px;
+            color:white;
+        }
+        .property-item .price {
+            font-size: 12px;
+            height: 20px;
+            padding: 0px 0px 0px 10px;
+            margin-left: -30px;
+            margin-bottom: 5px;
+        }
+        .detail p {
+            line-height: 1em;
+            margin: 0px;
+        }
+       
+    </style>
+}
+@section footer{
+    <script>
+        var baseUrl = '@Url.Content("~/")';
+    </script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
+    <!-- 加载百度地图样式信息窗口 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+    <!-- 加载城市列表 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.2/src/CityList_min.js"></script>
+    <script src="~/Scripts/page-search.js"></script>
+}
+<!-- Content -->
+<div class="container contents lisitng-grid-layout full-width">
+
+    <div class="row" style="margin-left:0px;">        <!-- Sidebar -->
+        <div class="sidebar-wrap" style="width: 400px; float: right;">
+
+            <aside class="sidebar">                
+                <section class="widget advance-search" style="margin-top:0px;">
+                    <h4 class="title search-heading">Real Estate</h4>
+                    <div style="padding:10px;">
+                        Sort by: 
+                        <a href="#"><span class="search-tile" id="sort-rent" data-type="">Rent</span></a>
+                        <a href="#"><span class="search-tile" id="sort-area" data-type="">Area</span></a>
+                        <a href="#"><span class="search-tile" id="sort-size" data-type="">Size</span></a>
+                        <a href="#"><span class="search-tile" id="sort-cost" data-type="">Management Cost</span></a>
+                    </div>
+                    <div class="as-form-wrap" style="height:814px;">
+                        <div id="search-result-panel">
+                            @foreach (var property in properties)
+                            {
+                                @Html.Partial("~/Views/Property/_SearchResultItemPartial.cshtml", property)
+                            }
+                        </div>
+                        <div class="pagination clearfix">
+                            <a href="#" class="real-btn current">1</a>
+                            @*<a href="#" class="real-btn">2</a>
+                            <a href="#" class="real-btn">3</a>
+                            <a href="#" class="real-btn">4</a>
+                            <a href="#" class="real-btn">5</a>
+                            <a href="#" class="real-btn">...</a>*@
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+        </div>
+        <div class="main-wrap" style="margin-right: 401px;">
+            <div class="row" style="margin-left: 0px; width: 100%; margin-bottom: 0px;height:252px;">
+                @Html.Partial("_SearchPanelPartial")
+            </div>
+            <!-- Main Content -->
+            <div class="main" style="margin-top: 0px; width: 100%;">
+                <div class="inner-wrapper" style="padding:0px;">
+                    <div class="map-container clearfix" style="height:500px;">
+                        <div id="map_canvas" style="height:500px;"></div>
+                    </div>
+                    <section class="contact-details clearfix" style="height:130px;">
+                        <h3 id="info-property"></h3>
+                        <address id="info-sponsor">Click Property on the Map</address>
+                        <ul class="contacts-list">
+                            <li class="phone"> Phone: x-xxx-xxx-xxxx</li>
+                            <li class="mobile"> Mobile: xx-xxx-xxx</li>
+                            <li class="email"> Email: contact@wei.tm</li>
+                        </ul>
+                    </section>
+
+                </div>
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <!-- End Sidebar -->
+
+    </div><!-- End contents row -->
+
+</div>
+<!-- End Content -->

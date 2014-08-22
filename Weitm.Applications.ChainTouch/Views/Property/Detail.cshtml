@@ -1,0 +1,232 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+
+@model Property
+
+@{
+    var developer = Developer.Get((Guid)Model.SponsorId);
+    var industrialPark = IndustrialPark.Get((Guid)Model.SponsorId);
+}
+ <!-- Page Head -->
+<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('@Url.Content("~/Images/page-head-image.jpg")'); ">
+    <div class="container">
+        <div class="wrap clearfix">
+            <h1 class="page-title"><span>Property</span></h1>
+            <p>@Model.Name</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="container contents lisitng-grid-layout">
+
+    <div class="row">
+
+        <div class="span9 main-wrap">
+
+            <!-- Main Content -->
+            <div class="main">
+
+                <section id="overview">
+
+                    <div id="property-detail-flexslider" class="clearfix">
+                        <div class="flexslider">
+
+                            <ul class="slides">
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+                                <li data-thumb="@Url.Content("~/Images/property.jpg")">
+                                    <a href="~/Images/property.jpg" class="swipebox">
+                                        <img src="~/Images/property.jpg" alt="image1">
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+
+                    <article class="property-item clearfix">
+
+                        <div class="wrap clearfix">
+                            <h4 class="title">@Model.Address</h4>
+                            <h5 class="price">
+                                <span class="status-label">
+                                    HOT
+                                </span>
+                                <span>
+                                    <small>@Model.Type.ToUpper()</small>
+                                </span>
+                            </h5>
+                        </div>
+
+                        <div class="property-meta clearfix">
+                            <span><i class="icon-area"></i>3800 sq ft&nbsp;</span>
+                            <span><i class="icon-area"></i>discounts</span>
+                            <span><i class="icon-area"></i>advantages</span>
+                            <span><i class="icon-area"></i>great</span>
+                            <!-- Print Icon -->
+                            <span class="printer-icon"><a href="javascript:window.print()">Print this page</a></span>
+                        </div>
+
+                        <div class="content clearfix">
+                            <p>@Model.Address</p>
+                        </div>
+
+                        <div class="features">
+                            <h4 class="title">Features</h4>
+                            <ul class="arrow-bullet-list clearfix">
+                                <li><a href="javascript:void(null);">Available Date: @Model.AvailableDate</a></li>
+                                <li><a href="javascript:void(null);">Clear Height: @Model.ClearHeight</a></li>
+                                <li><a href="javascript:void(null);">Column Space: @Model.ColumnSpace</a></li>
+                                <li><a href="javascript:void(null);">Complete Date: @Model.CompleteDate</a></li>
+                                <li><a href="javascript:void(null);">Gross Floor Area: @Model.GrossFloorArea</a></li>
+                                <li><a href="javascript:void(null);">Leasable Area: @Model.LeasableArea</a></li>
+                                <li><a href="javascript:void(null);">Management Fee: @Model.ManagementFee</a></li>
+                                <li><a href="javascript:void(null);">Number Of Floors: @Model.NumberOfFloors</a></li>
+                                <li><a href="javascript:void(null);">Power Capacity: @Model.PowerCapacity</a></li>
+                                <li><a href="javascript:void(null);">Property Structure: @Model.PropertyStructure</a></li>
+                                <li><a href="javascript:void(null);">Rent: @Model.Rent</a></li>
+                                <li><a href="javascript:void(null);">Total Land Size: @Model.TotalLandSize</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+
+                    <div class="property-video">
+                        <span class="video-label">Property Video</span>
+                        <a href="http://www.youku.com/" class="pretty-photo" title="Video">
+                            <div class="play-btn"></div>
+                            <img src="~/Content/realhomes/images/temp-images/property-video-image.jpg" alt="700 Front Street, Key West, FL">
+                        </a>
+                    </div>
+
+                    <div class="map-wrap clearfix">
+                        <span class="map-label">Property Map</span>
+                        <div id="property_map">
+
+                        </div>
+
+                        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
+                        <script type="text/javascript">
+                            // 百度地图API功能
+                            var map = new BMap.Map("property_map");                        // 创建Map实例
+                            map.centerAndZoom(new BMap.Point(@Model.EastLongitude, @Model.NorthLatitude), 11);     // 初始化地图,设置中心点坐标和地图级别
+                            map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+                            map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+                            map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+                            map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+                            map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+                            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+
+                            //根据daboxId创建自定义图层，用户可用自己创建的geotableid替换30960  
+                            var customLayer = new BMap.CustomLayer({
+                                geotableId: 75115,
+                                q: '', //检索关键字  
+                                tags: '', //空格分隔的多字符串  
+                                filter: '' //过滤条件,参考http://developer.baidu.com/map/lbs-geosearch.htm#.search.nearby  
+                            });
+                            map.addTileLayer(customLayer);//添加自定义图层  
+                        </script>
+
+                        <div class="share-networks clearfix">
+                            <span class="share-label">Share this</span>
+                            <span><a target="_blank" href="https://www.facebook.com/"><i class="icon-facebook"></i>Facebook</a></span>
+                            <span><a target="_blank" href="https://twitter.com/"><i class="icon-twitter"></i>Twitter</a></span>
+                            <span><a target="_blank" href="https://plus.google.com/"><i class="icon-google-plus"></i>Google</a></span>
+                        </div>
+                    </div>
+
+                    <div class="agent-detail clearfix">
+
+                        <div class="left-box">
+                            @if (developer != null)
+                            {
+                            <h3>Developer: @developer.Name</h3>
+                            }
+                            else if (industrialPark != null)
+                            {
+                            <h3>Industrial Park: @industrialPark.Name</h3>
+                            }
+                            else
+                            {
+                            <h3>Administrator</h3>
+                            }
+                            <figure>
+                                <a href="#">
+                                    <img src="~/Images/avatar.jpg" alt="Administrators">
+                                </a>
+                            </figure>
+                            <p>This is the introduction... This is the introduction... This is the introduction... This is the introduction... This is the introduction... This is the introduction... This is the introduction... </p>
+                            <ul class="contacts-list">
+                                <li class="office">Office : xxx-xxx-xxxx</li>
+                                <li class="mobile">Mobile : xxxx-xxx-xxxx</li>
+                                <li class="fax">Fax  : xxx-xxx-xxxx</li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-form">
+
+                            <h3>Contact</h3>
+
+                            <form id="agent-contact-form" class="contact-form-small" method="post" action="">
+
+                                <input type="text" name="name" id="name" value="Name" class="required" title="* Please provide your name">
+
+                                <input type="text" name="email" id="email" value="Email" class="email required" title="* Please provide valid email address">
+
+                                <textarea name="message" id="comment" class="required" title="* Please provide your message">Message</textarea>
+
+                                <input type="submit" value="Submit" name="submit" class="real-btn">
+                                <img src="~/Content/realhomes/images/ajax-loader.gif" id="contact-loader" alt="Loading...">
+
+                            </form>
+
+                            <div class="error-container"></div>
+                            <div id="message-sent">&nbsp;</div>
+                        </div>
+                    </div>
+
+
+                </section>
+
+            </div><!-- End Main Content -->
+
+        </div> <!-- End span9 -->
+
+        <div class="span3 sidebar-wrap">
+
+            @Html.Partial("_SidebarPartial")
+        </div>
+
+    </div><!-- End contents row -->
+
+</div><!-- End Content -->

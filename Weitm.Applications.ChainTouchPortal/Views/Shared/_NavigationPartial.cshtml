@@ -1,0 +1,189 @@
+﻿@{
+    string action = ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
+    string controller = ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();
+    //string id = ViewContext.Controller.ValueProvider.GetValue("id").RawValue.ToString();
+
+    string dashboardClass = "";
+    string accountClass = "";
+    string newsClass = "";
+    string developerClass = "";
+    string industrialParkClass = "";
+    string propertyClass = "";
+    string cloudClass = "";
+    string websiteClass = "";
+    string aboutClass = "";
+    string coreClass = "";
+    
+    switch(controller)
+    {
+        case "Main":
+            dashboardClass = "active";
+            break;
+        case "Account":
+        case "Accounts":
+            accountClass = "active";
+            break;
+        case "Articles":
+        case "Article":
+            newsClass = "active";
+            break;
+        case "Developer":
+        case "Developers":
+            developerClass = "active";
+            coreClass = "active";
+            break;
+        case "IndustrialPark":
+        case "IndustrialParks":
+            industrialParkClass = "active";
+            coreClass = "active";
+            break;
+        case "Property":
+        case "Properties":
+            propertyClass = "active";
+            coreClass = "active";
+            break;
+        case "Cloud":
+        case "BaiduMap":
+            cloudClass = "active";
+            coreClass = "active";
+            break;
+        case "WebSite":
+            websiteClass = "active";
+            coreClass = "active";
+            break;
+        case "About":
+            aboutClass = "active";
+            break; 
+    }
+}
+
+<div id="navigation">
+	<div class="container-fluid">
+		<a href="#" id="brand">Chain Touch Portal</a>
+		<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
+		<ul class='main-nav'>
+            
+            <li class="@dashboardClass">
+                <a href="~/Main/">
+                    Dashboard
+                </a>
+            </li>
+            @if(User.IsInRole("Administrators"))
+            {
+            <li class="@accountClass">
+                <a href="~/Accounts/">
+                    Accounts
+                </a>
+            </li>
+            }
+            @if (User.IsInRole("Administrators") || User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+            {
+			<li class="@newsClass">
+                <a href="~/Articles/">
+					<span>News</span>
+				</a>
+			</li>
+            }
+            @if (User.IsInRole("Administrators"))
+            {
+            <li class="@coreClass">
+                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                    <span>Core</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="~/Developers/">
+                            <span>Developers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/IndustrialParks/">
+                            <span>Industrial Parks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/ManagedProperties/">
+                            <span>Properties</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Cloud/">
+                            <span>LBS Cloud</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/WebSite/">
+                            <span>Tracer</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            }
+            @*@if(User.IsInRole("Administrators"))
+            {
+            <li class="@developerClass">
+                <a href="~/Developers/">
+                    <span>Developers</span>
+                </a>
+            </li>
+            }
+            @if(User.IsInRole("Administrators"))
+            {
+            <li class="@industrialParkClass">
+                <a href="~/IndustrialParks/">
+                    <span>Industrial Parks</span>
+                </a>
+            </li>
+            }*@
+            @if (User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+            {
+            <li class="@propertyClass">
+                <a href="~/ManagedProperties/">
+                    <span>Properties</span>
+                </a>
+            </li>
+            }
+            @*@if (User.IsInRole("Administrators"))
+            {
+                <li class="@cloudClass">
+                    <a href="~/Cloud/">
+                        <span>LBS Cloud</span>
+                    </a>
+                </li>
+            }*@
+            @*@if (User.IsInRole("Administrators"))
+            {
+            <li class="@websiteClass">
+                <a href="~/WebSite/">
+                    <span>WebSite</span>
+                </a>
+            </li>
+            }*@
+            <li class="@aboutClass">
+				<a href="~/About/">
+					<span>About Us</span>
+				</a>
+			</li>
+		</ul>
+		<div class="user">
+			<div class="dropdown">
+				<a href="#" class='dropdown-toggle' data-toggle="dropdown">@User.Identity.Name</a>
+				<ul class="dropdown-menu pull-right">
+                    @if (User.IsInRole("IndustrialParks") || User.IsInRole("Developers"))
+                    {
+                    <li>
+                        <a href="~/Account/EditProfile/">Edit Profile</a>
+                    </li>
+                    }
+					<li>
+						<a href="~/Account/ChangePassword/">Change Password</a>
+					</li>
+					<li>
+						<a href="~/Account/LogOff/">Log Off</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

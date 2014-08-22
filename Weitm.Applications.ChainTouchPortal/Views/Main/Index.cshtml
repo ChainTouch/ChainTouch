@@ -1,0 +1,71 @@
+﻿@section header
+{
+    <script src="~/Scripts/pages/main-index.js"></script>
+}
+<div id="left">
+    @Html.Partial("_SidebarPartial")
+</div>
+<div id="main">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="pull-left">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+        <div class="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="~/">Chain Touch Portal</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                <li>
+                    <a href="~/">Dashboard</a>
+                </li>
+            </ul>
+            <div class="close-bread">
+                <a href="#"><i class="icon-remove"></i></a>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <ul class="tiles">
+                    <li class="lime">
+                        <a href="~/"><span><i class="icon-dashboard"></i></span><span class="name">Dashboard</span></a>
+                    </li>
+                    @if(User.IsInRole("Administrators"))
+                    {
+                    <li class="red">
+                        <a href="~/Accounts/"><span class="count"><i class="icon-envelope"></i>
+                        <!-- 0 -->
+                        </span><span class="name">Accounts</span></a>
+                    </li>
+                    }
+                    <li class="lime">
+                        <a href="~/News/"><span class="count"><i class="icon-comment"></i> </span><span class="name">News</span></a>
+                    </li>
+                    @if(User.IsInRole("Administrators"))
+                    {
+                    <li class="brown">
+                        <a href="~/Developers/"><span class="count"><i class="icon-bolt"></i> </span><span class="name">Developers</span></a>
+                    </li>
+                    <li class="teal">
+                        <a href="~/IndustrialParks/"><span class="count"><i class="icon-cloud-upload"></i> </span><span class="name">Industrial Parks</span></a>
+                    </li>
+                    }
+                    <li class="magenta">
+                        <a href="~/ManagedProperties/"><span><i class="icon-star"></i></span><span class="name">Properties</span></a>
+                    </li>
+                    <li class="blue">
+                        <a href="~/About/"><span><i class="icon-wrench"></i></span><span class="name">About Us</span></a>
+                    </li>
+                    <li class="blue">
+                        <a href="~/Account/ChangePassword/"><span><i class="icon-cogs"></i></span><span class="name">Password</span></a>
+                    </li>
+                    <li class="orange">
+                        <a href="~/Account/LogOff/"><span><i class="icon-signout"></i></span><span class="name">Sign out</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
