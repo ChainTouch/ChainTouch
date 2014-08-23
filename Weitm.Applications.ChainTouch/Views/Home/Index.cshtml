@@ -16,16 +16,16 @@
                 <div class="desc-wrap">
                     <div class="slide-description">
                         <h3><a href="#">Find Your Property</a></h3>
-                        <form method="post" action="~/Search/">
+                        <form method="post" action="~/Property/Search/">
                             <p>
 
                                 Find
-                                <select name="bedrooms" class="search-type">
-                                    <option value="1">Factory</option>
-                                    <option value="2" selected>Warehouse</option>
+                                <select name="PropertyType" class="search-type">
+                                    <option value="workshop">Workshop</option>
+                                    <option value="warehouse" selected>Warehouse</option>
                                 </select>
                                 in
-                                <input type="text" class="search-place" />
+                                <input type="text" name="District" class="search-place" />
                                 <input type="submit" value="Search" class="real-btn btn" />
 
                             </p>
@@ -39,16 +39,18 @@
                 <div class="desc-wrap">
                     <div class="slide-description">
                         <h3><a href="#">Find Your Property</a></h3>
-                        <form method="post" action="~/Search/">
+                        <form method="post" action="~/Property/Search/">
                             <p>
+
                                 Find
-                                <select name="bedrooms" class="search-type">
-                                    <option value="1" selected>Factory</option>
-                                    <option value="2">Warehouse</option>
+                                <select name="PropertyType" class="search-type">
+                                    <option value="workshop">Workshop</option>
+                                    <option value="warehouse" selected>Warehouse</option>
                                 </select>
                                 in
-                                <input type="text" class="search-place" />
-                                <input type="button" value="Search" class="real-btn btn" />
+                                <input type="text" name="District" class="search-place" />
+                                <input type="submit" value="Search" class="real-btn btn" />
+
                             </p>
                         </form>
                         <a href="~/Property/Search/" class="know-more">Advanced Search</a>

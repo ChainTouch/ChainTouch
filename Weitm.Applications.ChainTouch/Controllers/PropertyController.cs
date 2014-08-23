@@ -40,6 +40,11 @@ namespace Weitm.Applications.ChainTouch.Controllers
 
         public ActionResult Search()
         {
+            if(Request.HttpMethod=="POST")
+            {
+                ViewBag.District = Request.Form["District"].ToString();
+                ViewBag.PropertyType = Request.Form["PropertyType"].ToString();
+            }
             return View();
         }
     }

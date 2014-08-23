@@ -1,100 +1,101 @@
 ﻿
-var map = new BMap.Map("map_canvas");
-map.centerAndZoom(new BMap.Point(121.5155850000, 31.3095330000), 13);
-map.addControl(new BMap.NavigationControl()); 
-map.addControl(new BMap.ScaleControl());
-map.addControl(new BMap.OverviewMapControl());
-map.enableScrollWheelZoom(); 
-map.addControl(new BMap.MapTypeControl());
-map.setCurrentCity("上海"); 
-////显示全部麻点会降低速度，先备注，看性能再定夺。
-//var customLayer = new BMap.CustomLayer({
-//    geotableId: 75115,
-//    q: '',
-//    tags: '', 
-//    filter: ''
-//});
-//map.addTileLayer(customLayer);
-//customLayer.addEventListener('hotspotclick', callback);
-map.addEventListener('movestart', update)
-
-
-
-function update(e) {
-    var overlays = map.getOverlays();
-    //console.log(overlays);
-}
-
-function callback(e)//单击热点图层
-{
-    var customPoi = e.customPoi;
-    var contentPoi = e.content;
-    $("#info-property").html(contentPoi.property_name);
-    $("#info-sponsor").html(contentPoi.sponsor_name);
-    var content = '<p style="width:280px;margin:0;line-height:20px;">Sponsor：' + contentPoi.sponsor_name + '<br/>Property:' + contentPoi.property_name + '<br/><a href="@Url.Content("~/Property/Detail/")' + contentPoi.property_id + '">Detail</a></p>';
-    var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
-        title: customPoi.title,
-        width: 290,
-        height: 40,
-        panel: "panel",
-        enableAutoPan: true,
-        enableSendToPhone: true,
-        searchTypes: [
-            BMAPLIB_TAB_SEARCH, 
-            BMAPLIB_TAB_TO_HERE, 
-            BMAPLIB_TAB_FROM_HERE 
-        ]
-    });
-    var point = new BMap.Point(customPoi.point.lng, customPoi.point.lat);
-    searchInfoWindow.open(point);
-}
-
-function buildCity(province, target) {
-    if (province == 'any') {
-        target.html('');
-        target.append("<option value='any'>City - Any</option>");
-    }
-    else{
-        target.html('');
-        target.append("<option value='loading...'>loading...</option>");
-        $.ajax({
-            type: "GET",
-            url: baseUrl + "ApiData/Cities/" + province,
-            success: function (data) {
-                target.html('');
-                target.append("<option value='any'>City - Any</option>");
-                $.each(eval(data), function (index, element) {
-                    target.append("<option value='" + element.value + "'>" + element.text + "</option>");
-                });
-            }
-        });
-    }
-}
-
-function buildArea(city, target) {
-    if (city == 'any') {
-        target.html('');
-        target.append("<option value='any'>District - Any</option>");
-    }
-    else {
-        target.html('');
-        target.append("<option value='loading...'>loading...</option>");
-        $.ajax({
-            type: "GET",
-            url: baseUrl + "ApiData/Areas/" + city,
-            success: function (data) {
-                target.html('');
-                target.append("<option value='any'>District - Any</option>");
-                $.each(eval(data), function (index, element) {
-                    target.append("<option value='" + element.value + "'>" + element.text + "</option>");
-                });
-            }
-        });
-    }
-}
-
 $(document).ready(function () {
-    $("#bydistrict-province").change(function () {
+
+
+    var map = new BMap.Map("map_canvas");
+    map.centerAndZoom(new BMap.Point(121.5155850000, 31.3095330000), 13);
+    map.addControl(new BMap.NavigationControl());
+    map.addControl(new BMap.ScaleControl());
+    map.addControl(new BMap.OverviewMapControl());
+    map.enableScrollWheelZoom();
+    map.addControl(new BMap.MapTypeControl());
+    map.setCurrentCity("上海");
+    ////显示全部麻点会降低速度，先备注，看性能再定夺。
+    //var customLayer = new BMap.CustomLayer({
+    //    geotableId: 75115,
+    //    q: '',
+    //    tags: '', 
+    //    filter: ''
+    //});
+    //map.addTileLayer(customLayer);
+    //customLayer.addEventListener('hotspotclick', callback);
+    map.addEventListener('movestart', update)
+
+
+
+    function update(e) {
+        var overlays = map.getOverlays();
+    }
+
+    function callback(e)
+    {
+        var customPoi = e.customPoi;
+        var contentPoi = e.content;
+        $("#info-property").html(contentPoi.property_name);
+        $("#info-sponsor").html(contentPoi.sponsor_name);
+        var content = '<p style="width:280px;margin:0;line-height:20px;">Sponsor：' + contentPoi.sponsor_name + '<br/>Property:' + contentPoi.property_name + '<br/><a href="@Url.Content("~/Property/Detail/")' + contentPoi.property_id + '">Detail</a></p>';
+        var searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+            title: customPoi.title,
+            width: 290,
+            height: 40,
+            panel: "panel",
+            enableAutoPan: true,
+            enableSendToPhone: true,
+            searchTypes: [
+                BMAPLIB_TAB_SEARCH,
+                BMAPLIB_TAB_TO_HERE,
+                BMAPLIB_TAB_FROM_HERE
+            ]
+        });
+        var point = new BMap.Point(customPoi.point.lng, customPoi.point.lat);
+        searchInfoWindow.open(point);
+    }
+
+    function buildCity(province, target) {
+        if (province == 'any') {
+            target.html('');
+            target.append("<option value='any'>City - Any</option>");
+        }
+        else {
+            target.html('');
+            target.append("<option value='loading...'>loading...</option>");
+            $.ajax({
+                type: "GET",
+                url: baseUrl + "ApiData/Cities/" + province,
+                success: function (data) {
+                    target.html('');
+                    target.append("<option value='any'>City - Any</option>");
+                    $.each(eval(data), function (index, element) {
+                        target.append("<option value='" + element.value + "'>" + element.text + "</option>");
+                    });
+                }
+            });
+        }
+    }
+
+    function buildArea(city, target) {
+        if (city == 'any') {
+            target.html('');
+            target.append("<option value='any'>District - Any</option>");
+        }
+        else {
+            target.html('');
+            target.append("<option value='loading...'>loading...</option>");
+            $.ajax({
+                type: "GET",
+                url: baseUrl + "ApiData/Areas/" + city,
+                success: function (data) {
+                    target.html('');
+                    target.append("<option value='any'>District - Any</option>");
+                    $.each(eval(data), function (index, element) {
+                        target.append("<option value='" + element.value + "'>" + element.text + "</option>");
+                    });
+                }
+            });
+        }
+    }
+
+        $("#bydistrict-province").change(function () {
         buildCity($("#bydistrict-province").val(), $("#bydistrict-city"))
     });
 
@@ -106,14 +107,12 @@ $(document).ready(function () {
         $(this).addClass('unfavorite-button');
         $(this).removeClass('favorite-button');
         favorite($(this).data("property-id"));
-        //console.log($(this).data("property-id"));
     });
 
     $(".unfavorite-button").click(function () {
         $(this).addClass('favorite-button');
         $(this).removeClass('unfavorite-button');
         unfavorite($(this).data("property-id"));
-        //console.log($(this).data("property-id"));
     });
 
     function favorite(propertyId)
@@ -122,8 +121,6 @@ $(document).ready(function () {
     }
 
     function addMarker(lon, lat, name, rent, area, size, cost, id) {
-        //console.log(lon + ',' + ',' + lat + ',' + name);
-
         var point = new BMap.Point(lon, lat);
         var marker = new BMap.Marker(point, name);
         var sContent =
@@ -133,6 +130,7 @@ $(document).ready(function () {
         "<p style='margin:0;line-height:1.5;font-size:13px;'>Leasable Area:" + area + "</p>" +
         "<p style='margin:0;line-height:1.5;font-size:13px;'>Total Land Size:" + size + "</p>" +
         "<p style='margin:0;line-height:1.5;font-size:13px;'>Management Cost:" + cost + "</p>" +
+        "<p style='margin:0;line-height:1.5;font-size:13px;'><a href='" + baseUrl + "Property/Detail/" + id + "'>View Detail</a></p>" +
         "</div>";
 
         var infoWindow = new BMap.InfoWindow(sContent);
@@ -144,6 +142,10 @@ $(document).ready(function () {
         });
 
         marker.addEventListener("click", function () {
+            marker.openInfoWindow(infoWindow);
+        });
+
+        marker.addEventListener("mouseover", function () {
             marker.openInfoWindow(infoWindow);
         });
 
@@ -159,8 +161,6 @@ $(document).ready(function () {
 
 
     function districtSearch() {
-        //map.removeTileLayer(customLayer);//隐藏麻点图
-
         $('#bydistrict-form').ajaxSubmit({
             url: baseUrl + 'ApiData/Local/',
             method: "POST",
@@ -170,11 +170,8 @@ $(document).ready(function () {
                     addMarker(element.lon, element.lat, element.name, element.rent, element.area, element.size, element.cost, element.id);
                     if (index == 0)
                     {
-                        console.log(element.lon);
-                        console.log(element.lat);
                         map.setZoom(13)
                         map.panTo(new BMap.Point(element.lon, element.lat));
-                        //map.centerAndZoom(new BMap.Point(element.lon, element.lat),13)
                     }
                 });
             }
@@ -191,7 +188,6 @@ $(document).ready(function () {
         var province = $("#bydistrict-province").find("option:selected").text();
         map.setCurrentCity(province);
         var myGeo = new BMap.Geocoder();
-        // 将地址解析结果显示在地图上，并调整地图视野  
         myGeo.getPoint(province, function (point) {
             if (point) {
                 map.centerAndZoom(point, 13);
@@ -201,8 +197,7 @@ $(document).ready(function () {
     }
 
 
-    function distanceSearch() {
-        //map.removeTileLayer(customLayer);//隐藏麻点图
+    var distanceSearch = function() {
         $('#bydistance-form').ajaxSubmit({
             url: baseUrl + 'ApiData/Nearby/',
             method: "POST",
@@ -211,11 +206,8 @@ $(document).ready(function () {
                 $.each(eval(data), function (index, element) {
                     addMarker(element.lon, element.lat, element.name, element.rent, element.area, element.size, element.cost, element.id);
                     if (index == 0) {
-                        console.log(element.lon);
-                        console.log(element.lat);
                         map.setZoom(13)
                         map.panTo(new BMap.Point(element.lon, element.lat));
-                        //map.centerAndZoom(new BMap.Point(element.lon, element.lat),13)
                     }
                 });
             }
@@ -231,16 +223,16 @@ $(document).ready(function () {
 
         //$("#search-result-panel").load(baseUrl + "ApiData/LocalHtml/" + province, null, null);
 
-        var province = $("#bydistance-province").find("option:selected").text();
-        var district = $("#bydistance-district").val();
-        var myGeo = new BMap.Geocoder();
-        // 将地址解析结果显示在地图上，并调整地图视野  
-        myGeo.getPoint(district, function (point) {
-            if (point) {
-                map.centerAndZoom(point, 13);
-                map.addOverlay(new BMap.Marker(point));
-            }
-        }, province);
+        //var province = $("#bydistance-province").find("option:selected").text();
+        //var district = $("#bydistance-district").val();
+        //var myGeo = new BMap.Geocoder();
+        //// 将地址解析结果显示在地图上，并调整地图视野  
+        //myGeo.getPoint(district, function (point) {
+        //    if (point) {
+        //        map.centerAndZoom(point, 13);
+        //        map.addOverlay(new BMap.Marker(point));
+        //    }
+        //}, province);
     }
 
     function doSearch() {
@@ -258,7 +250,27 @@ $(document).ready(function () {
         var lon = $(this).data("lon");
         map.panTo(new BMap.Point(lon, lat)); 
     });
-
+    function clearSortRent()
+    {
+        $("#sort-rent").text("Rent");
+        $("#sort-rent").data("type", "");
+        $(".sort-rent").val("");
+    }
+    function clearSortArea() {
+        $("#sort-area").text("Area");
+        $("#sort-area").data("type", "");
+        $(".sort-area").val("");
+    }
+    function clearSortSize() {
+        $("#sort-size").text("Size");
+        $("#sort-size").data("type", "");
+        $(".sort-size").val("");
+    }
+    function clearSortCost() {
+        $("#sort-cost").text("Management Cost");
+        $("#sort-cost").data("type", "");
+        $(".sort-cost").val("");
+    }
     $("#sort-rent").click(function () {
         var type = $("#sort-rent").data("type");
         if (type == "")        {
@@ -276,6 +288,9 @@ $(document).ready(function () {
             $("#sort-rent").data("type", "");
             $(".sort-rent").val("");
         }
+        clearSortArea();
+        clearSortCost();
+        clearSortSize();
         doSearch();
     });
     $("#sort-area").click(function () {
@@ -295,6 +310,9 @@ $(document).ready(function () {
             $("#sort-area").data("type", "");
             $(".sort-area").val("");
         }
+        clearSortRent();
+        clearSortCost();
+        clearSortSize();
         doSearch();
     });
     $("#sort-size").click(function () {
@@ -314,6 +332,9 @@ $(document).ready(function () {
             $("#sort-size").data("type", "");
             $(".sort-size").val("");
         }
+        clearSortArea();
+        clearSortCost();
+        clearSortRent();
         doSearch();
     });
     $("#sort-cost").click(function () {
@@ -333,6 +354,9 @@ $(document).ready(function () {
             $("#sort-cost").data("type", "");
             $(".sort-cost").val("");
         }
+        clearSortArea();
+        clearSortRent();
+        clearSortSize();
         doSearch();
     });
 
@@ -346,60 +370,78 @@ $(document).ready(function () {
         distanceSearch();
         event.preventDefault();
     });
-});
 
 
-function G(id) {
-    return document.getElementById(id);
-}
 
-
-function setPlace() {
-    map.clearOverlays();    //清除地图上所有覆盖物
-    function myFun() {
-        var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-        $(".current-lat").val(pp.lat);
-        $(".current-lon").val(pp.lng);
-        map.centerAndZoom(pp, 18);
-        map.addOverlay(new BMap.Marker(pp));    //添加标注
+    function G(id) {
+        return document.getElementById(id);
     }
-    var local = new BMap.LocalSearch(map, { //智能搜索
-        onSearchComplete: myFun
+
+
+    function setPlace() {
+        map.clearOverlays();    //清除地图上所有覆盖物
+        function myFun() {
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            $(".current-lat").val(pp.lat);
+            $(".current-lon").val(pp.lng);
+            map.centerAndZoom(pp, 18);
+            map.addOverlay(new BMap.Marker(pp));    //添加标注
+
+            distanceSearch();
+        }
+        var local = new BMap.LocalSearch(map, { //智能搜索
+            onSearchComplete: myFun
+        });
+        local.search(myValue);
+    }
+
+    var ac = new BMap.Autocomplete(
+    {
+        "input": "bydistance-district",
+        "location": map
     });
-    local.search(myValue);
 
-    distanceSearch();
-}
+    ac.addEventListener("onhighlight", function (e) {
+        var str = "";
+        var _value = e.fromitem.value;
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province + _value.city + _value.district + _value.street + _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
 
-var ac = new BMap.Autocomplete(
-{
-    "input": "bydistance-district",
-    "location": map
-});
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province + _value.city + _value.district + _value.street + _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        G("searchResultPanel").innerHTML = str;
+    });
 
-ac.addEventListener("onhighlight", function (e) {
-    var str = "";
-    var _value = e.fromitem.value;
-    var value = "";
-    if (e.fromitem.index > -1) {
-        value = _value.province + _value.city + _value.district + _value.street + _value.business;
+    var myValue;
+    ac.addEventListener("onconfirm", function (e) {    //鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+        myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+        G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+
+        setPlace();
+    });
+
+    if ($("#bydistance-district").val() != "") {
+        var local = new BMap.LocalSearch(map, {
+            renderOptions: {
+                map: map,
+                autoViewport: true
+            },
+            onSearchComplete: function () {
+                var pp = local.getResults().getPoi(0).point;
+                $(".current-lat").val(pp.lat);
+                $(".current-lon").val(pp.lng);
+                distanceSearch();
+            }
+        });
+        local.search($("#bydistance-district").val());
+
     }
-    str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
-
-    value = "";
-    if (e.toitem.index > -1) {
-        _value = e.toitem.value;
-        value = _value.province + _value.city + _value.district + _value.street + _value.business;
-    }
-    str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
-    G("searchResultPanel").innerHTML = str;
-});
-
-var myValue;
-ac.addEventListener("onconfirm", function (e) {    //鼠标点击下拉列表后的事件
-    var _value = e.item.value;
-    myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
-    G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
-
-    setPlace();
 });

@@ -4,29 +4,31 @@
 @{
     var properties = Property.Get().Take(5);
     var provinces = GeoProvince.Get();
+    string districtCss = "active";
+    string distanceCss = "";
+    if(!String.IsNullOrEmpty(ViewBag.District))
+    {
+        districtCss = "";
+        distanceCss = "active";
+    }
 }
 
 @section header{
     <link href="~/Styles/search-page.css" rel="stylesheet" />
-}
-@section footer{
-    <script>
+    <script type="text/javascript">
         var baseUrl = '@Url.Content("~/")';
     </script>
-    <script src="~/Scripts/jquery.form.js"></script>
+}
+@section footer{
+
+    <script type="text/javascript" src="~/Scripts/jquery.form.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
     <!-- 加载百度地图样式信息窗口 -->
     <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
     <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
     <!-- 加载城市列表 -->
     <script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.2/src/CityList_min.js"></script>
-    <script src="~/Scripts/page-search.js"></script>
-    <!--[if IE]>
-    <style>
-        #map_canvas{width:250px;}
-    </style>
-    <![endif]-->
-
+    <script type="text/javascript" src="~/Scripts/page-search.js"></script>
 }
 <!-- Content -->
 <div class="container contents full-width search-page">
@@ -68,7 +70,241 @@
         <!-- Main Content -->
         <div class="main">
             <div class="row clearfix">
-                @Html.Partial("_SearchPanelPartial")
+                <div class="widget advance-search">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="@districtCss"><a href="#bydistrict" data-toggle='tab'>By District</a></li>
+                        <li class="@distanceCss"><a href="#bydistance" data-toggle='tab'>By Distance</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane @districtCss" id="bydistrict">
+                            <form method="post" id="bydistrict-form">
+                                <input type="hidden" value="" name="sort-rent" class="sort-rent" />
+                                <input type="hidden" value="" name="sort-area" class="sort-area" />
+                                <input type="hidden" value="" name="sort-size" class="sort-size" />
+                                <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                                <div class="row-fluid">
+                                    <div class="span4">
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistrict-province" name="Province" class="search-select">
+                                                    <option value="any" selected="selected">Province - Any</option>
+                                                    @foreach (var province in provinces)
+                                                    {
+                                                        <option value="@province.ProvinceCode">@province.ProvinceName</option>
+                                                    }
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistrict-city" name="City" class="search-select">
+                                                    <option value="any" selected="selected">City - Any</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistrict-district" name="Disctrict" class="search-select">
+                                                    <option value="any" selected="selected">District - Any</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistrict-type" name="Type" class="search-select">
+                                                    <option value="any" selected="selected">Type - Any</option>
+                                                    <option value="workshop">Workshop</option>
+                                                    <option value="warehouse">Warehouse</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistrict-structure" name="Structure" class="search-select">
+                                                    <option value="any" selected="selected">Structure - Any</option>
+                                                    <option value="single-floor">Single Floor</option>
+                                                    <option value="multi-floor">Multi Floor</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistrict-size" name="Size" class="search-select">
+                                                    <option value="any" selected="selected">Size - Any</option>
+                                                    <option value="1000-">under 1000㎡</option>
+                                                    <option value="1000-1500">1000㎡-1500㎡</option>
+                                                    <option value="1500-2000">1500㎡-2000㎡</option>
+                                                    <option value="2000+">above 2000㎡</option>
+                                                </select>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="span5">
+                                        <div class="option-bar">
+                                            <div>
+                                                <strong class="range-label">Asking Rental:</strong>
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistrict-rental-down" name="RentalDown" class="range-text" />
+                                                </span>
+                                                -
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistrict-rental-up" name="RentalUp" class="range-text" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="option-bar">
+                                            <div>
+                                                <strong class="range-label">Management Cost:</strong>
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistrict-cost-down" name="CostDown" class="range-text" />
+                                                </span>
+                                                -
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistrict-cost-up" name="CostUp" class="range-text" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="option-bar">
+                                            <button id="bydistrict-button" type="button" name="action" value="bydistrict" class=" real-btn btn search-btn">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane @distanceCss" id="bydistance">
+                            <form id="bydistance-form" method="post">
+                                <input type="hidden" value="" name="sort-rent" class="sort-rent" />
+                                <input type="hidden" value="" name="sort-area" class="sort-area" />
+                                <input type="hidden" value="" name="sort-size" class="sort-size" />
+                                <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                                <input type="hidden" value="" name="current-lat" class="current-lat" />
+                                <input type="hidden" value="" name="current-lon" class="current-lon" />
+                                <div class="row-fluid">
+                                    <div class="span4">
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistance-province" name="Province" class="search-select">
+                                                    <option value="any" selected="selected">Province - Any</option>
+                                                    @foreach (var province in provinces)
+                                                    {
+                                                        <option value="@province.ProvinceCode">@province.ProvinceName</option>
+                                                    }
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span>
+                                                <input id="bydistance-district" name="District" placeholder="District" type="text" class="" value="@ViewBag.District" />
+                                            </span>
+                                            <div id="searchResultPanel" style="display:none;border:1px solid #C0C0C0;width:150px;height:auto;">
+                                            </div>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistance-radius" name="Radius" class="search-select">
+                                                    <option value="10000000" selected="selected">Radius - Any</option>
+                                                    <option value="50000">under50km</option>
+                                                    <option value="100000">under100km</option>
+                                                    <option value="150000">under150km</option>
+                                                    <option value="200000">under200km</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="span4">
+
+
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistance-type" name="Type" class="search-select">
+                                                    @if(String.IsNullOrEmpty(ViewBag.PropertyType))
+                                                    {
+                                                    <option value="any" selected="selected">Type - Any</option>
+                                                    <option value="workshop">Workshop</option>
+                                                    <option value="warehouse">Warehouse</option>
+                                                    }
+                                                    else if (ViewBag.PropertyType == "workshop")
+                                                    {
+                                                    <option value="any">Type - Any</option>
+                                                    <option value="workshop" selected="selected">Workshop</option>
+                                                    <option value="warehouse">Warehouse</option>
+                                                    }
+                                                    else if (ViewBag.PropertyType == "warehouse")
+                                                    {
+                                                        <option value="any">Type - Any</option>
+                                                        <option value="workshop">Workshop</option>
+                                                        <option value="warehouse" selected="selected">Warehouse</option>
+                                                    }
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistance-structure" name="Structure" class="search-select">
+                                                    <option value="any" selected="selected">Structure - Any</option>
+                                                    <option value="single-floor">Single Floor</option>
+                                                    <option value="multi-floor">Multi Floor</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="option-bar">
+                                            <span class="selectwrap">
+                                                <select id="bydistance-size" name="Size" class="search-select">
+                                                    <option value="any" selected="selected">Size - Any</option>
+                                                    <option value="1000-">under 1000㎡</option>
+                                                    <option value="1000-1500">1000㎡-1500㎡</option>
+                                                    <option value="1500-2000">1500㎡-2000㎡</option>
+                                                    <option value="2000+">above 2000㎡</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="span5">
+                                        <div class="option-bar">
+                                            <div>
+                                                <strong class="range-label">Asking Rental:</strong>
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistance-rental-down" name="RentalDown" class="range-text" />
+                                                </span>
+                                                -
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistance-rental-up" name="RentalUp" class="range-text" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="option-bar">
+                                            <div>
+                                                <strong class="range-label">Management Cost:</strong>
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistance-cost-down" class="range-text" name="CostDown" />
+                                                </span>
+                                                -
+                                                ￥
+                                                <span>
+                                                    <input type="number" id="bydistance-cost-up" name="CostUp" class="range-text" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="option-bar">
+                                            <button id="bydistance-button" type="button" name="action" value="bydistance" class=" real-btn btn search-btn">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
                 @*<section class="search-condition">
                     Search Conditions:
                     <span class="search-tile">none</span>

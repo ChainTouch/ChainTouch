@@ -72,28 +72,106 @@ namespace Weitm.Applications.ChainTouch.Controllers
             int radius = Convert.ToInt32(Request.Form["Radius"].ToString());
 
             var service = new PropertyGeoService();
-            //var properties = service.Nearby();
             var properties = service.Nearby(lat, lon, radius);
 
+            #region Search Filters
             //Province:any
             if(Request.Form["Province"]!=null)
             {
                 string provinceCode = Request.Form["Province"].ToString();
-                if (provinceCode != "any")
+                if (provinceCode != "any" && provinceCode !="loading...")
                 {
                     string provinceName = GeoProvince.Get(Convert.ToInt32(provinceCode)).ProvinceName;
                     properties = properties.Where(p => p.Province == provinceName).ToList();
                 }
             }
-            //District:
-            //Radius:any
+
+
             //Type:any
+            if (Request.Form["Type"] != null)
+            {
+                string type = Request.Form["Type"].ToString();
+                if (type != "any")
+                {
+                    properties = properties.Where(p => p.Type == type).ToList();
+                }
+            }
+
             //Structure:any
+            if (Request.Form["Structure"] != null)
+            {
+                string structure = Request.Form["Structure"].ToString();
+                if (structure != "any")
+                {
+                    properties = properties.Where(p => p.PropertyStructure == structure).ToList();
+                }
+            }
+
             //Size:any
+            if (Request.Form["Size"] != null)
+            {
+                string size = Request.Form["Size"].ToString();
+                switch (size)
+                {
+                    case "1000-":
+                        properties = properties.Where(p => p.TotalLandSize <= 1000).ToList();
+                        break;
+                    case "1000-1500":
+                        properties = properties.Where(p => p.TotalLandSize >= 1000 && p.TotalLandSize <= 1500).ToList();
+                        break;
+                    case "1500-2000":
+                        properties = properties.Where(p => p.TotalLandSize >= 1500 && p.TotalLandSize <= 2000 ).ToList();
+                        break;
+                    case "2000+":
+                        properties = properties.Where(p => p.TotalLandSize >= 2000).ToList();
+                        break;
+                }
+            }
+
             //RentalDown:
+            if (Request.Form["RentalDown"] != null)
+            {
+                string rentDown = Request.Form["RentalDown"].ToString();
+                if(rentDown!="")
+                {
+                    decimal rentDownNumber = Convert.ToDecimal(rentDown);
+                    properties = properties.Where(p => p.Rent >= rentDownNumber).ToList();
+                }
+            }
             //RentalUp:
+            if (Request.Form["RentalUp"] != null)
+            {
+                string rentUp = Request.Form["RentalUp"].ToString();
+                if (rentUp != "")
+                {
+                    decimal rentUpNumber = Convert.ToDecimal(rentUp);
+                    properties = properties.Where(p => p.Rent <= rentUpNumber).ToList();
+                }
+            }
             //CostDown:
+            if (Request.Form["CostDown"] != null)
+            {
+                string costDown = Request.Form["CostDown"].ToString();
+                if (costDown != "")
+                {
+                    decimal costDownNumber = Convert.ToDecimal(costDown);
+                    properties = properties.Where(p => p.ManagementFee >= costDownNumber).ToList();
+                }
+            }
             //CostUp:
+            if (Request.Form["CostUp"] != null)
+            {
+                string costUp = Request.Form["CostUp"].ToString();
+                if (costUp != "")
+                {
+                    decimal costUpNumber = Convert.ToDecimal(costUp);
+                    properties = properties.Where(p => p.ManagementFee <= costUpNumber).ToList();
+                }
+            }
+
+            #endregion
+
+            #region Sorting
             //sort-rent
             if (Request.Form["sort-rent"] != null)
             {
@@ -146,6 +224,7 @@ namespace Weitm.Applications.ChainTouch.Controllers
                     properties = properties.OrderByDescending(p => p.ManagementFee).ToList();
                 }
             }
+            #endregion
 
             return properties;
         }
@@ -177,39 +256,47 @@ namespace Weitm.Applications.ChainTouch.Controllers
         private List<Property> SolveLocal()
         {
             //var service = new PropertyGeoService();
-            //使用本地解决方案
             //string region = "";
             //var properties = service.Local(region);
 
+            //使用本地解决方案
             var properties = Property.Get();
 
+            #region Search Filters
             //Province:any
             if (Request.Form["Province"] != null)
             {
                 string provinceCode = Request.Form["Province"].ToString();
-                if (provinceCode != "any")
+                if (provinceCode != "any" && provinceCode != "loading...")
                 {
                     string provinceName = GeoProvince.Get(Convert.ToInt32(provinceCode)).ProvinceName;
                     properties = properties.Where(p => p.Province == provinceName).ToList();
                 }
             }
 
-
             ////City:any
-            //if (Request.Form["City"] != null)
-            //{
-            //    string cityCode = Request.Form["City"].ToString();
-            //    if (cityCode != "any")
-            //    {
-            //        string cityName = GeoCity.Get(Convert.ToInt32(cityCode)).CityName;
-            //        properties = properties.Where(p => p.Municipal == cityName).ToList();
-            //    }
-            //}
+            if (Request.Form["City"] != null)
+            {
+                string cityCode = Request.Form["City"].ToString();
+                if (cityCode != "any" && cityCode != "loading...")
+                {
+                    string cityName = GeoCity.Get(Convert.ToInt32(cityCode)).CityName;
+                    properties = properties.Where(p => p.Municipal == cityName).ToList();
+                }
+            }
 
             //Disctrict:any
-
+            if (Request.Form["Disctrict"] != null)
+            {
+                string areaCode = Request.Form["Disctrict"].ToString();
+                if (areaCode != "any" && areaCode != "loading...")
+                {
+                    string areaName = GeoArea.Get(Convert.ToInt32(areaCode)).AreaName;
+                    properties = properties.Where(p => p.District == areaName).ToList();
+                }
+            }
+            
             //Type:any
-
             if (Request.Form["Type"] != null)
             {
                 string type = Request.Form["Type"].ToString();
@@ -220,13 +307,79 @@ namespace Weitm.Applications.ChainTouch.Controllers
             }
 
             //Structure:any
-            //Size:any
-            //RentalDown:
-            //RentalUp:
-            //CostDown:
-            //CostUp:
+            if (Request.Form["Structure"] != null)
+            {
+                string structure = Request.Form["Structure"].ToString();
+                if (structure != "any")
+                {
+                    properties = properties.Where(p => p.PropertyStructure == structure).ToList();
+                }
+            }
 
-            #region 处理排序
+            //Size:any
+            if (Request.Form["Size"] != null)
+            {
+                string size = Request.Form["Size"].ToString();
+                switch (size)
+                {
+                    case "1000-":
+                        properties = properties.Where(p => p.TotalLandSize <= 1000).ToList();
+                        break;
+                    case "1000-1500":
+                        properties = properties.Where(p => p.TotalLandSize >= 1000 && p.TotalLandSize <= 1500).ToList();
+                        break;
+                    case "1500-2000":
+                        properties = properties.Where(p => p.TotalLandSize >= 1500 && p.TotalLandSize <= 2000).ToList();
+                        break;
+                    case "2000+":
+                        properties = properties.Where(p => p.TotalLandSize >= 2000).ToList();
+                        break;
+                }
+            }
+
+            //RentalDown:
+            if (Request.Form["RentalDown"] != null)
+            {
+                string rentDown = Request.Form["RentalDown"].ToString();
+                if (rentDown != "")
+                {
+                    decimal rentDownNumber = Convert.ToDecimal(rentDown);
+                    properties = properties.Where(p => p.Rent >= rentDownNumber).ToList();
+                }
+            }
+            //RentalUp:
+            if (Request.Form["RentalUp"] != null)
+            {
+                string rentUp = Request.Form["RentalUp"].ToString();
+                if (rentUp != "")
+                {
+                    decimal rentUpNumber = Convert.ToDecimal(rentUp);
+                    properties = properties.Where(p => p.Rent <= rentUpNumber).ToList();
+                }
+            }
+            //CostDown:
+            if (Request.Form["CostDown"] != null)
+            {
+                string costDown = Request.Form["CostDown"].ToString();
+                if (costDown != "")
+                {
+                    decimal costDownNumber = Convert.ToDecimal(costDown);
+                    properties = properties.Where(p => p.ManagementFee >= costDownNumber).ToList();
+                }
+            }
+            //CostUp:
+            if (Request.Form["CostUp"] != null)
+            {
+                string costUp = Request.Form["CostUp"].ToString();
+                if (costUp != "")
+                {
+                    decimal costUpNumber = Convert.ToDecimal(costUp);
+                    properties = properties.Where(p => p.ManagementFee <= costUpNumber).ToList();
+                }
+            }
+            #endregion 
+
+            #region Sorting
             //sort-rent
             if (Request.Form["sort-rent"] != null)
             {
