@@ -120,6 +120,8 @@
                     <input type="hidden" value="" name="sort-area" class="sort-area" />
                     <input type="hidden" value="" name="sort-size" class="sort-size" />
                     <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                    <input type="hidden" value="" name="current-lat" class="current-lat" />
+                    <input type="hidden" value="" name="current-lon" class="current-lon" />
                     <div class="row-fluid">
                         <div class="span4">
                             <div class="option-bar">
@@ -137,17 +139,17 @@
                                 <span>
                                     <input id="bydistance-district" name="District" placeholder="District" type="text" class="" />
                                 </span>
+                                <div id="searchResultPanel" style="display:none;border:1px solid #C0C0C0;width:150px;height:auto;">
+                                </div>
                             </div>
-
-
                             <div class="option-bar">
                                 <span class="selectwrap">
                                     <select id="bydistance-radius" name="Radius" class="search-select">
-                                        <option value="any" selected="selected">Radius - Any</option>
-                                        <option value="50-">under50km</option>
-                                        <option value="50-100">50km-100km</option>
-                                        <option value="100-150">100-150km</option>
-                                        <option value="150-200">150-200km</option>
+                                        <option value="10000" selected="selected">Radius - Any</option>
+                                        <option value="50">under50km</option>
+                                        <option value="100">under100km</option>
+                                        <option value="150">under150km</option>
+                                        <option value="200">under200km</option>
                                     </select>
                                 </span>
                             </div>

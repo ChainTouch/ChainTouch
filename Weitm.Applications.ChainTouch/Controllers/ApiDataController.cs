@@ -49,7 +49,11 @@ namespace Weitm.Applications.ChainTouch.Controllers
                     id = p.Id,
                     lat = p.NorthLatitude,
                     lon = p.EastLongitude,
-                    name = p.Name
+                    name = p.Name,
+                    rent = p.Rent, 
+                    area = p.LeasableArea, 
+                    size = p.TotalLandSize,
+                    cost = p.ManagementFee
                 }                
             ));
         }
@@ -62,10 +66,14 @@ namespace Weitm.Applications.ChainTouch.Controllers
 
         public List<Property> SolveNearBy()
         {
-            //double lat, double lon, int radius;
+
+            double lat = Convert.ToDouble(Request.Form["current-lat"].ToString());
+            double lon = Convert.ToDouble(Request.Form["current-lon"].ToString());
+            int radius = Convert.ToInt32(Request.Form["Radius"].ToString());
+
             var service = new PropertyGeoService();
-            var properties = service.Nearby();
-            //var properties = service.Nearby(lat, lon, radius);
+            //var properties = service.Nearby();
+            var properties = service.Nearby(lat, lon, radius);
 
             //Province:any
             if(Request.Form["Province"]!=null)
@@ -151,7 +159,11 @@ namespace Weitm.Applications.ChainTouch.Controllers
                     id = p.Id,
                     lat = p.NorthLatitude,
                     lon = p.EastLongitude,
-                    name = p.Name
+                    name = p.Name,
+                    rent = p.Rent, 
+                    area = p.LeasableArea, 
+                    size = p.TotalLandSize,
+                    cost = p.ManagementFee
                 }
             ));
         }
