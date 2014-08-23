@@ -2,24 +2,23 @@
 @using Weitm.Modules.CommonData.Models;
 
 @{
-    var properties = Property.Get().Take(8);
+    var properties = Property.Get().Take(5);
     var provinces = GeoProvince.Get();
 }
 
-<div class="inner-wrapper" style="margin-bottom:0px;padding:0px;">
-    <section class="widget advance-search" style="margin-bottom:0px;height:200px;">
-        <ul class="nav nav-tabs" id="myTab" style="padding:0 0 0 0;height:37px;padding-left:10px;">
-            <li style="padding:0px;" class="active"><a href="#bydistrict" data-toggle='tab'>By District</a></li>
-            <li style="padding: 0px; "><a href="#bydistance" data-toggle='tab'>By Distance</a></li>
+    <div class="widget advance-search">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#bydistrict" data-toggle='tab'>By District</a></li>
+            <li><a href="#bydistance" data-toggle='tab'>By Distance</a></li>
         </ul>
-        <div class="advance-search-form clearfix">
-            <div class="tab-content">
-                <div class="tab-pane active" id="bydistrict">
-                    <form method="post" id="bydistrict-form">
-                        <input type="hidden" value="" name="sort-rent" class="sort-rent" />
-                        <input type="hidden" value="" name="sort-area" class="sort-area" />
-                        <input type="hidden" value="" name="sort-size" class="sort-size" />
-                        <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+        <div class="tab-content">
+            <div class="tab-pane active" id="bydistrict">
+                <form method="post" id="bydistrict-form">
+                    <input type="hidden" value="" name="sort-rent" class="sort-rent" />
+                    <input type="hidden" value="" name="sort-area" class="sort-area" />
+                    <input type="hidden" value="" name="sort-size" class="sort-size" />
+                    <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                    <div class="row-fluid">
                         <div class="span4">
                             <div class="option-bar">
                                 <span class="selectwrap">
@@ -27,7 +26,7 @@
                                         <option value="any" selected="selected">Province - Any</option>
                                         @foreach (var province in provinces)
                                         {
-                                            <option value="@province.ProvinceCode">@province.ProvinceName</option>
+                                        <option value="@province.ProvinceCode">@province.ProvinceName</option>
                                         }
                                     </select>
                                 </span>
@@ -41,7 +40,7 @@
                             </div>
                             <div class="option-bar">
                                 <span class="selectwrap">
-                                    <select id="bydistrict-district"  name="Disctrict" class="search-select">
+                                    <select id="bydistrict-district" name="Disctrict" class="search-select">
                                         <option value="any" selected="selected">District - Any</option>
                                     </select>
                                 </span>
@@ -79,32 +78,32 @@
                             </div>
 
                         </div>
-                        <div class="span4" style="width:40%;">
+                        <div class="span5">
                             <div class="option-bar">
-                                <div style="clear:both;">
-                                    <strong style="width:140px;text-align:right;display:inline-block;">Asking Rental:</strong>
+                                <div>
+                                    <strong class="range-label">Asking Rental:</strong>
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistrict-rental-down" name="RentalDown" style="width:50px;" />
+                                        <input type="text" id="bydistrict-rental-down" name="RentalDown" class="range-text" />
                                     </span>
                                     -
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistrict-rental-up" name="RentalUp" style="width:50px;" />
+                                        <input type="text" id="bydistrict-rental-up" name="RentalUp" class="range-text" />
                                     </span>
                                 </div>
                             </div>
                             <div class="option-bar">
-                                <div style="clear:both;">
-                                    <strong style="width:140px;text-align:right;display:inline-block;">Management Cost:</strong>
+                                <div>
+                                    <strong class="range-label">Management Cost:</strong>
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistrict-cost-down" name="CostDown" style="width:50px;" />
+                                        <input type="text" id="bydistrict-cost-down" name="CostDown" class="range-text" />
                                     </span>
                                     -
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistrict-cost-up" name="CostUp" style="width:50px;" />
+                                        <input type="text" id="bydistrict-cost-up" name="CostUp" class="range-text" />
                                     </span>
                                 </div>
                             </div>
@@ -112,14 +111,16 @@
                                 <button id="bydistrict-button" type="button" name="action" value="bydistrict" class=" real-btn btn search-btn">Search</button>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="tab-pane" id="bydistance" style="height:480px;">
-                    <form id="bydistance-form" method="post">
-                        <input type="hidden" value="" name="sort-rent" class="sort-rent" />
-                        <input type="hidden" value="" name="sort-area" class="sort-area" />
-                        <input type="hidden" value="" name="sort-size" class="sort-size" />
-                        <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane" id="bydistance">
+                <form id="bydistance-form" method="post">
+                    <input type="hidden" value="" name="sort-rent" class="sort-rent" />
+                    <input type="hidden" value="" name="sort-area" class="sort-area" />
+                    <input type="hidden" value="" name="sort-size" class="sort-size" />
+                    <input type="hidden" value="" name="sort-cost" class="sort-cost" />
+                    <div class="row-fluid">
                         <div class="span4">
                             <div class="option-bar">
                                 <span class="selectwrap">
@@ -184,32 +185,32 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="span4" style="width:40%;">
+                        <div class="span5">
                             <div class="option-bar">
-                                <div style="clear:both;">
-                                    <strong style="width:140px;text-align:right;display:inline-block;">Asking Rental:</strong>
+                                <div>
+                                    <strong class="range-label">Asking Rental:</strong>
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistance-rental-down" name="RentalDown" style="width:50px;" />
+                                        <input type="text" id="bydistance-rental-down" name="RentalDown" class="range-text" />
                                     </span>
                                     -
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistance-rental-up" name="RentalUp" style="width:50px;" />
+                                        <input type="text" id="bydistance-rental-up" name="RentalUp" class="range-text" />
                                     </span>
                                 </div>
                             </div>
                             <div class="option-bar">
-                                <div style="clear:both;">
-                                    <strong style="width:140px;text-align:right;display:inline-block;">Management Cost:</strong>
+                                <div>
+                                    <strong class="range-label">Management Cost:</strong>
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistance-cost-down" name="CostDown" style="width:50px;" />
+                                        <input type="text" id="bydistance-cost-down" class="range-text" name="CostDown" />
                                     </span>
                                     -
                                     ￥
                                     <span>
-                                        <input type="text" id="bydistance-cost-up" name="CostUp" style="width:50px;" />
+                                        <input type="text" id="bydistance-cost-up" name="CostUp" class="range-text" />
                                     </span>
                                 </div>
                             </div>
@@ -217,14 +218,13 @@
                                 <button id="bydistance-button" type="button" name="action" value="bydistance" class=" real-btn btn search-btn">Search</button>
                             </div>
                         </div>
-                    </form>
-                </div>
-
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-    <section style="height:40px;padding-top:10px;padding-left:10px;">
-        @*Search Conditions:
-        <span class="search-tile">none</span>*@
-    </section>
-</div>
+
+    </div>
+    @*<section class="search-condition">
+        Search Conditions:
+        <span class="search-tile">none</span>
+    </section>*@
