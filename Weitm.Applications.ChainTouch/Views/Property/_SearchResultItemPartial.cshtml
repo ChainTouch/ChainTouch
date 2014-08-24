@@ -10,7 +10,7 @@
 
 <article class="property-item clearfix" style="padding: 0px; height: 80px; margin-bottom:0px;">
     <figure style="width:100px;">
-        <a class="property-result-item" data-property-id="@property.Id" data-lat="@property.NorthLatitude" data-lon="@property.EastLongitude" title="@property.Address" style="cursor: pointer;width:100px; height: 80px;">
+        <a class="property-result-item" id="item-@property.Id" onclick="javascript:move(@property.EastLongitude, @property.NorthLatitude);" data-property-id="@property.Id" data-lat="@property.NorthLatitude" data-lon="@property.EastLongitude" title="@property.Address" style="cursor: pointer;width:100px; height: 80px;">
             <img src="~/Images/property.jpg" alt="@property.Address" title="@property.Address" height="80" width="100" style="height:80px;width:100px;">
         </a>
     </figure>

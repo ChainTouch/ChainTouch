@@ -1,8 +1,14 @@
-﻿<figure>
-    <a href="#" title="12345 Southwest 39th Shanghai">
-        <img src="~/Images/property.jpg" alt="12345 Southwest 39th Shanghai" title="12345 Southwest 39th Shanghai">
+﻿@model Weitm.Modules.ChainTouch.Models.Property
+@{
+    var property = Model;      
+}
+
+<figure>
+    <a href="~/Property/Detail/@property.Id" title="@property.Name">
+        <img src="~/Images/property.jpg" alt="@property.Name" title="@property.Name">
     </a>
 </figure>
-<h4><a href="#" title="12345 Southwest 39th Shanghai">12345 Southwest 39th Shanghai</a></h4>
-<p>Here is the introduction of the property,… <a href="#"> Know More </a> </p>
-<span class="price">$x,xxx Per Month</span>
+<h4><a href="~/Property/Detail/@property.Id" title="@property.Name">@property.Name</a></h4>
+<p>@property.Name  </p>
+<p><a href="~/Property/Detail/@property.Id"> Know More </a></p>
+<span class="price">Mgmt Cost: @property.ManagementFee</span>

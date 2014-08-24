@@ -42,8 +42,14 @@ namespace Weitm.Applications.ChainTouch.Controllers
         {
             if(Request.HttpMethod=="POST")
             {
-                ViewBag.District = Request.Form["District"].ToString();
-                ViewBag.PropertyType = Request.Form["PropertyType"].ToString();
+                if (Request.Form["District"]!=null)
+                {
+                    ViewBag.District = Request.Form["District"].ToString();
+                }
+                if (Request.Form["PropertyType"] != null)
+                {
+                    ViewBag.PropertyType = Request.Form["PropertyType"].ToString();
+                }
             }
             return View();
         }

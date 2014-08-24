@@ -1,4 +1,5 @@
 ﻿@using Weitm.Modules.Article.Models;
+@using Weitm.Modules.ChainTouch.Models;
 
 @section header{
     <style type="text/css">
@@ -81,35 +82,35 @@
                                 <article>
                                     <h2><span>Featured Properties</span> Workshop</h2>
                                 </article>
-                                @for (int a = 1; a <= 2; a++)
+                                @foreach (var property in Property.FindByType("workshop", 3))
                                 {
-                                        @Html.Partial("_PropertyItemPartial")
+                                        @Html.Partial("_PropertyItemPartial", property)
                                 }
                                 
                             </div><!-- End .property-items-container -->
-                            <div class="pagination">
+                            @*<div class="pagination">
                                 <a href="#" class="real-btn current">1</a> <a href="#" class="real-btn">2</a>
-                            </div>
+                            </div>*@
                             <div class="property-items-container clearfix">
                                 <article>
                                     <h2><span>Featured Properties</span> Warehouse</h2>
                                 </article>
-                                @for (int a = 1; a <= 2; a++)
+                                @foreach (var property in Property.FindByType("warehouse", 3))
                                 {
-                                    @Html.Partial("_PropertyItemPartial")
+                                    @Html.Partial("_PropertyItemPartial", property)
                                 }
 
                             </div><!-- End .property-items-container -->
-                            <div class="pagination">
+                            @*<div class="pagination">
                                 <a href="#" class="real-btn current">1</a> <a href="#" class="real-btn">2</a>
-                            </div>
+                            </div>*@
                         </div>
                         <div class="span6">
                             <article>
                                 <h2><span>Market</span> News 1</h2>
                             </article>
                             <div class="small-arrow-list">
-                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[0])
+                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[0].GetArticles(10))
 
                                 <p>
                                     <a href="~/MarketNews/" class="real-btn btn-mini">View All</a>
@@ -120,7 +121,7 @@
                                 <h2><span>Market</span> News 2</h2>
                             </article>
                             <div class="small-arrow-list">
-                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[1])
+                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[1].GetArticles(10))
                                 <p>
                                     <a href="~/MarketNews/" class="real-btn btn-mini">View All</a>
                                 </p>
@@ -166,14 +167,9 @@
                                 <h2><span>Academy</span> Data</h2>
                             </article>
                             <div class="tick-list">
-                                <ul>
-                                    <li>Suspendisse a amet enim congue accumsan.</li>
-                                    <li>Integer aliquam suscipit tellus sagittis in.</li>
-                                    <li>Pellentesque sem elementum ornare.</li>
-                                    <li>Sed vel ante sit amet ipsum molestie adipiscing.</li>
-                                </ul>
+                                @Html.Partial("_NewsListPartial", Category.GetCategoryByUniqueName("Market News").GetChildCategories()[2].GetArticles(10))
                                 <p>
-                                    <a href="#" class="real-btn btn-mini">View All</a>
+                                    <a href="~/MarketNews/" class="real-btn btn-mini">View All</a>
                                 </p>
                             </div>
                         </div>
@@ -189,10 +185,10 @@
                     <div class="carousel es-carousel-wrapper">
                         <div class="es-carousel">
                             <ul class="clearfix">
-                                @for(int b = 1; b <= 10;b ++)
+                                @foreach(var property in Property.Get(15))
                                 {
                                 <li>
-                                    @Html.Partial("_PropertyBriefPartial")
+                                    @Html.Partial("_PropertyBriefPartial", property)
                                 </li>
                                 }
                             </ul>

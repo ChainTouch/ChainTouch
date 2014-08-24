@@ -1,0 +1,15 @@
+﻿@using Weitm.Modules.ChainTouch.Models;
+@model Property
+
+@{
+    var property = Model;
+}
+
+<figure>
+    <a href="~/Property/Detail/@property.Id">
+        <img src="~/Images/featured-widget-image.jpg" alt="@property.Name">
+    </a>
+</figure>
+<h4><a href="~/Property/Detail/@property.Id" title="@property.Name">@property.Name</a></h4>
+<p>@property.Name <br/> <a href="~/Property/Detail/@property.Id">Read More</a></p>
+<span class="price">Mgmt Fee: ￥@property.ManagementFee</span>

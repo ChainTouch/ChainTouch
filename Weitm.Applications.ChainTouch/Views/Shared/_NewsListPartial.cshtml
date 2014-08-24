@@ -1,16 +1,9 @@
 ﻿@using Weitm.Modules.Article.Models;
 
-@model Category
-
-@{
-    var items = Model.GetArticles(10);
-}
-
-@* ViewData["data"].ToString(); *@
-@* @Html.Partial("_NewsListPartial", layout, new ViewDataDictionary {{"class",ViewBag.RecordId}})} *@
+@model List<Article>
 
 <ul>
-    @foreach(var item in items)
+    @foreach(var item in Model)
     {
     <li><a href="~/MarketNews/Show/@item.Id">@item.Subject</a></li>
     }

@@ -437,6 +437,100 @@ namespace Weitm.Applications.ChainTouch.Controllers
             return properties.Take(20).ToList();
         }
 
+        public string IndustrialParkSearch()
+        {
+            var parks = IndustrialPark.Get();
+
+            if (Request.Form["Name"] != null)
+            {
+                string name = Request.Form["Name"].ToString();
+                parks = parks.Where(p => p.Name.Contains(name)).ToList();
+            }
+
+            if(Request.Form["Location"]!=null)
+            {
+                string location = Request.Form["Location"].ToString();
+                parks = parks.Where(p =>
+                    p.Province.Contains(location)
+                    || p.Municipal.Contains(location)
+                    || p.District.Contains(location)
+                    || p.Address.Contains(location))
+                .ToList();
+            }
+
+            return JsonConvert.SerializeObject(
+                parks.Select(p => new
+                {
+                    id = p.Id,
+                    lat = p.NorthLatitude,
+                    lon = p.EastLongitude,
+                    address = p.Address,
+                    year = p.EstablishedYear,
+                    name = p.Name,
+                    count = p.Properties.Count()
+                }
+            ));
+        }
+
+        public string DeveloperSearch()
+        {
+            var developers = Developer.Get();
+
+            if (Request.Form["Name"] != null)
+            {
+                string name = Request.Form["Name"].ToString();
+                developers = developers.Where(p => p.Name.Contains(name)).ToList();
+            }
+
+            if (Request.Form["Location"] != null)
+            {
+                string location = Request.Form["Location"].ToString();
+                developers = developers.Where(p =>
+                    p.Province.Contains(location)
+                    || p.Municipal.Contains(location)
+                    || p.District.Contains(location)
+                    || p.ChinaHeadquarterAddress.Contains(location))
+                .ToList();
+            }
+
+            var result = new List<object>();
+            foreach (var developer in developers)
+            {
+                var properties = developer.Properties.ToList();
+                if (Request.Form["Location"] != null)
+                {
+                    string location = Request.Form["Location"].ToString();
+                    properties = properties.Where(p =>
+                       p.Province.Contains(location)
+                       || p.Municipal.Contains(location)
+                       || p.District.Contains(location)
+                       || p.Address.Contains(location))
+                    .ToList();
+                }
+                var propertiesObject = properties.Select(p => new
+                {
+                    id = p.Id,
+                    lat = p.NorthLatitude,
+                    lon = p.EastLongitude,
+                    name = p.Name,
+                    rent = p.Rent,
+                    area = p.LeasableArea,
+                    size = p.TotalLandSize,
+                    cost = p.ManagementFee
+                }).ToList();
+                result.Add(new {
+                    id = developer.Id,
+                    lat = developer.NorthLatitude,
+                    lon = developer.EastLongitude,
+                    address = developer.ChinaHeadquarterAddress,
+                    name = developer.Name,
+                    count = developer.Properties.Count(),
+                    properties = propertiesObject
+                });
+            }
+
+            return JsonConvert.SerializeObject(result);
+        }
         #endregion
 
         #region 地理信息

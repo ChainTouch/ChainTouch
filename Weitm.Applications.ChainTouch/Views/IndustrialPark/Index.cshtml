@@ -1,6 +1,9 @@
 ﻿@using Weitm.Modules.ChainTouch.Models;
+@using Weitm.Modules.Article.Models;
 @{
     var industrialParks = IndustrialPark.Get().Take(5);
+    var root = Category.GetCategoryByUniqueName("Market News");
+    var categories = root.GetChildCategories();
 }
 
 @section header{
@@ -8,8 +11,30 @@
     .option-bar { 
         margin-right:20px;
     }
-    .main-wrap { margin-left:0px;}
+    .main-wrap { }
+    #overview #property_map {
+        border: none;
+        width: 100%;
+        height: 450px;
+        margin-bottom: 15px;
+    }
+        #Type, #Name, #Location {
+            width:150px;
+        }
     </style>
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~/")';
+    </script>
+}
+
+@section footer{
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
+    <!-- 加载百度地图样式信息窗口 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+    <!-- 加载城市列表 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.2/src/CityList_min.js"></script>
+    <script type="text/javascript" src="~/Scripts/industrial-park-search.js"></script>
 }
 
 <!-- Page Head -->
@@ -33,15 +58,10 @@
             <div class="main">
 
                 <section class="listing-layout">
-                    <h3 class="title-heading">Industrial Park</h3>
+                    <h3 class="title-heading">Industrial Park News</h3>
 
                     <div class="small-arrow-list">
-                        <ul>
-                            @foreach(var industrialPark in industrialParks)
-                            {
-                            <li><a href="~/IndustrialPark/Detail/@industrialPark.Id/">@industrialPark.Name</a></li>
-                            }
-                        </ul>
+                        @Html.Partial("_NewsListPartial", categories[0].GetArticles(5))
                     </div>
                 </section>
 
@@ -89,91 +109,55 @@
     </div><!-- End contents row -->
 
     <div class="row">
-        <section class="widget advance-search">
-            <h4 class="title search-heading">Find Your Property<i class="icon-search"></i></h4>
-            <div class="as-form-wrap">
-                <form class="advance-search-form clearfix" action="#" method="get">
+        <div class="span9">
+            <section class="widget advance-search">
+                <h4 class="title search-heading">Find Industrial Park<i class="icon-search"></i></h4>
+                <div class="as-form-wrap">
+                    <form class="advance-search-form clearfix" method="post" id="industrial-park-search">
 
-                    <div class="option-bar">
-                        <label>Type</label>
-                        <span class="selectwrap">
-                            <select name="location" id="select-location" class="search-select">
-                                <option value="any" selected="selected">Any</option>
-                                <option value="miami">Factory</option>
-                                <option value="newyork">Warehouse</option>
-                            </select>
-                        </span>
-                    </div>
+                        <div class="option-bar">
+                            <label>Location</label>
+                            <span class="selectwrap">
+                                <input id="Location" name="Location" type="text" />
+                            </span>
+                        </div>
 
-                    <div class="option-bar">
-                        <label>Location</label>
-                        <span class="selectwrap">
-                            <input type="text" />
-                        </span>
-                    </div>
-                    <div class="option-bar">
-                        <label>&nbsp;</label>
-                        <input type="submit" value="Search" class=" real-btn btn">
-                    </div>
-                </form>
-            </div>
-        </section>
-        <section id="overview">
-            <div class="map-wrap clearfix">
-                <span class="map-label">Property Map</span>
-                <div id="property_map">
+                        <div class="option-bar">
+                            <label>Industrial Park Name</label>
+                            <span class="selectwrap">
+                                <input id="Name" name="Name" type="text" />
+                            </span>
+                        </div>
 
+                        <div class="option-bar">
+                            <label>&nbsp;</label>
+                            <input type="submit" id="Search" value="Search" class=" real-btn btn">
+                        </div>
+                    </form>
                 </div>
+            </section>
+            <section id="overview">
+                <div class="map-wrap clearfix">
+                    <span class="map-label">Industrial Park Map</span>
+                    <div id="property_map">
 
-                @*<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>*@
-                <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h0UOjQKmhlDUKwlff50FCOLP"></script>
-                <script type="text/javascript">
-                    //// Google Map
-                    //function initialize() {
-                    //    var geocoder = new google.maps.Geocoder();
-                    //    var map;
-                    //    var latlng = new google.maps.LatLng(-37.817917, 144.965065);
-                    //    var infowindow = new google.maps.InfoWindow();
-                    //    var myOptions = {
-                    //        zoom: 17,
-                    //        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    //    };
-
-                    //    map = new google.maps.Map(document.getElementById("property_map"), myOptions);
-
-                    //    geocoder.geocode({ 'location': latlng },
-                    //        function (results, status) {
-                    //            if (status == google.maps.GeocoderStatus.OK) {
-                    //                map.setCenter(results[0].geometry.location);
-                    //                var marker = new google.maps.Marker({
-                    //                    map: map,
-                    //                    position: results[0].geometry.location
-                    //                });
-                    //                //alert(results[0].formatted_address);
-                    //                //infowindow.setContent(results[0].formatted_address);
-                    //                //infowindow.open(map, marker);
-                    //            }
-                    //            else {
-                    //                alert("Geocode was not successful for the following reason: " + status);
-                    //            }
-                    //        });
-
-                    //}
-
-                    //initialize();
-                    // 百度地图API功能
-                    var map = new BMap.Map("property_map");                        // 创建Map实例
-                    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);     // 初始化地图,设置中心点坐标和地图级别
-                    map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
-                    map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
-                    map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
-                    map.enableScrollWheelZoom();                            //启用滚轮放大缩小
-                    map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
-                    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-                </script>
-            </div>
-        </section>
-
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="span3">
+            <section class="widget">
+                <h3 class="title">Featured Properties</h3>
+                <ul class="featured-properties">
+                    @foreach(var property in Property.Get(2))
+                    {
+                    <li>
+                        @Html.Partial("_FeaturedPropertyPartial", property)
+                    </li>
+                    }
+                </ul>
+            </section>
+        </div>
     </div>
 
 </div><!-- End Content -->

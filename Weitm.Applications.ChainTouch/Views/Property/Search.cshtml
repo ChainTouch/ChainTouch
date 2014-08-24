@@ -17,6 +17,7 @@
     <link href="~/Styles/search-page.css" rel="stylesheet" />
     <script type="text/javascript">
         var baseUrl = '@Url.Content("~/")';
+        var initValue = '@ViewBag.District';
     </script>
 }
 @section footer{
@@ -219,8 +220,6 @@
                                         </div>
                                     </div>
                                     <div class="span4">
-
-
                                         <div class="option-bar">
                                             <span class="selectwrap">
                                                 <select id="bydistance-type" name="Type" class="search-select">
