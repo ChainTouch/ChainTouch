@@ -2,7 +2,7 @@
 @using Weitm.Modules.CommonData.Models;
 
 @{
-    var properties = Property.Get().Take(5);
+    var properties = Property.Get().Where(p=>p.Province=="江苏省").Take(5);
     var provinces = GeoProvince.Get();
     string districtCss = "active";
     string distanceCss = "";

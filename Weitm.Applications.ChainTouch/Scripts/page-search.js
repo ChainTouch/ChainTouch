@@ -20,11 +20,14 @@ $(document).ready(function () {
     //map.addTileLayer(customLayer);
     //customLayer.addEventListener('hotspotclick', callback);
     map.addEventListener('movestart', update)
-
+    update();
 
 
     function update(e) {
         var overlays = map.getOverlays();
+        var pp = map.getCenter();
+        $(".current-lat").val(pp.lat);
+        $(".current-lon").val(pp.lng);
     }
 
     function callback(e)
@@ -197,29 +200,74 @@ $(document).ready(function () {
     }
 
 
-    var distanceSearch = function() {
-        $('#bydistance-form').ajaxSubmit({
-            url: baseUrl + 'ApiData/Nearby/',
-            method: "POST",
-            success: function (data) {
-                map.clearOverlays();
-                $.each(eval(data), function (index, element) {
-                    addMarker(element.lon, element.lat, element.name, element.rent, element.area, element.size, element.cost, element.id);
-                    if (index == 0) {
-                        map.setZoom(13)
-                        map.panTo(new BMap.Point(element.lon, element.lat));
-                    }
-                });
-            }
-        });
+    var distanceSearch = function () {
+        var searchResult = $("#searchResultPanel").html();
+        var searchDistrict = $("#bydistance-district").val();
 
-        $('#bydistance-form').ajaxSubmit({
-            url: baseUrl + 'ApiData/NearbyHtml/',
-            method: "POST",
-            success: function (html) {
-                $("#search-result-panel").html(html);
-            }
-        });
+        if (searchResult != searchDistrict)
+        {
+            //地点不一致，触发地点搜索先
+            var local = new BMap.LocalSearch(map, {
+                renderOptions: {
+                    map: map,
+                    autoViewport: true
+                },
+                onSearchComplete: function () {
+                    var pp = local.getResults().getPoi(0).point;
+                    $(".current-lat").val(pp.lat);
+                    $(".current-lon").val(pp.lng);
+
+                    $('#bydistance-form').ajaxSubmit({
+                        url: baseUrl + 'ApiData/Nearby/',
+                        method: "POST",
+                        success: function (data) {
+                            map.clearOverlays();
+                            $.each(eval(data), function (index, element) {
+                                addMarker(element.lon, element.lat, element.name, element.rent, element.area, element.size, element.cost, element.id);
+                                if (index == 0) {
+                                    map.setZoom(13)
+                                    map.panTo(new BMap.Point(element.lon, element.lat));
+                                }
+                            });
+                        }
+                    });
+
+                    $('#bydistance-form').ajaxSubmit({
+                        url: baseUrl + 'ApiData/NearbyHtml/',
+                        method: "POST",
+                        success: function (html) {
+                            $("#search-result-panel").html(html);
+                        }
+                    });
+                }
+            });
+            local.search($("#bydistance-district").val());
+        }
+        else
+        {
+            $('#bydistance-form').ajaxSubmit({
+                url: baseUrl + 'ApiData/Nearby/',
+                method: "POST",
+                success: function (data) {
+                    map.clearOverlays();
+                    $.each(eval(data), function (index, element) {
+                        addMarker(element.lon, element.lat, element.name, element.rent, element.area, element.size, element.cost, element.id);
+                        if (index == 0) {
+                            map.setZoom(13)
+                            map.panTo(new BMap.Point(element.lon, element.lat));
+                        }
+                    });
+                }
+            });
+
+            $('#bydistance-form').ajaxSubmit({
+                url: baseUrl + 'ApiData/NearbyHtml/',
+                method: "POST",
+                success: function (html) {
+                    $("#search-result-panel").html(html);
+                }
+            });
+        }
 
         //$("#search-result-panel").load(baseUrl + "ApiData/LocalHtml/" + province, null, null);
 
@@ -408,14 +456,14 @@ $(document).ready(function () {
         if (e.fromitem.index > -1) {
             value = _value.province + _value.city + _value.district + _value.street + _value.business;
         }
-        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+        str = value;
 
         value = "";
         if (e.toitem.index > -1) {
             _value = e.toitem.value;
             value = _value.province + _value.city + _value.district + _value.street + _value.business;
         }
-        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        str += value;
         G("searchResultPanel").innerHTML = str;
     });
 
@@ -423,7 +471,7 @@ $(document).ready(function () {
     ac.addEventListener("onconfirm", function (e) {    //鼠标点击下拉列表后的事件
         var _value = e.item.value;
         myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
-        G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+        G("searchResultPanel").innerHTML = myValue;
 
         setPlace();
     });
