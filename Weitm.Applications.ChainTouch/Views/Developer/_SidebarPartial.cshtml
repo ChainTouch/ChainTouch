@@ -1,18 +1,22 @@
-﻿<!-- Sidebar -->
+﻿@using Weitm.Modules.ChainTouch.Models;
+
+@{
+    
+}
 <aside class="sidebar">
 
     <section class="widget advance-search">
         <h4 class="title search-heading">Find Your Property<i class="icon-search"></i></h4>
         <div class="as-form-wrap">
-            <form class="advance-search-form clearfix" action="#" method="get">
+            <form class="advance-search-form clearfix" action="~/Property/Search/" method="post">
 
                 <div class="option-bar">
                     <label>Type</label>
                     <span class="selectwrap">
-                        <select name="location" id="select-location" class="search-select">
+                        <select name="Type" id="Type" class="search-select">
                             <option value="any" selected="selected">Any</option>
-                            <option value="miami">Factory</option>
-                            <option value="newyork">Warehouse</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="warehouse">Warehouse</option>
                         </select>
                     </span>
                 </div>
@@ -20,7 +24,7 @@
                 <div class="option-bar">
                     <label>Location</label>
                     <span class="selectwrap">
-                        <input type="text" />
+                        <input type="text" name="Location" />
                     </span>
                 </div>
 
@@ -30,33 +34,19 @@
     </section><section class="widget">
         <h3 class="title">Property Types</h3>
         <ul>
-            <li><a href="#">Factory</a></li>
-            <li><a href="#">Ware House</a></li>
+            <li><a href="~/Property/Search/?type=workshop">Workshop</a></li>
+            <li><a href="~/Property/Search/?type=warehouse">Warehouse</a></li>
         </ul>
     </section>
     <section class="widget">
         <h3 class="title">Featured Properties</h3>
         <ul class="featured-properties">
+            @foreach(var property in Property.Get(2))
+            {
             <li>
-                <figure>
-                    <a href="#">
-                        <img src="~/Images/featured-widget-image.jpg" alt="property 10">
-                    </a>
-                </figure>
-                <h4><a href="#" title="123456 Southwest 39th Shanghai">123456 Southwest 39th Shanghai</a></h4>
-                <p>This is th introduction… <a href="#">Read More</a></p>
-                <span class="price">$x,xxx Per Month</span>
+                @Html.Partial("_FeaturedPropertyPartial", property)
             </li>
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="~/Images/featured-widget-image.jpg" alt="property 10">
-                    </a>
-                </figure>
-                <h4><a href="#" title="123456 Southwest 39th Shanghai">123456 Southwest 39th Shanghai</a></h4>
-                <p>This is th introduction… <a href="#">Read More</a></p>
-                <span class="price">$x,xxx Per Month</span>
-            </li>
+            }
         </ul>
     </section>
 </aside><!-- End Sidebar -->

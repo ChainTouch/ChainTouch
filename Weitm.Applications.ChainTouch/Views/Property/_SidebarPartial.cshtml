@@ -28,7 +28,7 @@
                 <div class="option-bar">
                     <label>Type</label>
                     <span class="selectwrap">
-                        <select name="PropertyType" id="PropertyType" class="search-select">
+                        <select name="Type" id="Type" class="search-select">
                             <option value="any" selected="selected">Any</option>
                             <option value="workshop">Workshop</option>
                             <option value="warehouse">Warehouse</option>
@@ -39,29 +39,28 @@
                 <div class="option-bar">
                     <label>Location</label>
                     <span class="selectwrap">
-                        <input type="text" name="District" id="District" />
+                        <input type="text" name="Location" />
                     </span>
                 </div>
 
                 <input type="submit" value="Search" class=" real-btn btn">
             </form>
         </div>
-    </section>
-    <section class="widget">
+    </section><section class="widget">
         <h3 class="title">Property Types</h3>
         <ul>
-            <li><a href="#">Workshop</a></li>
-            <li><a href="#">Warehouse</a></li>
+            <li><a href="~/Property/Search/?type=workshop">Workshop</a></li>
+            <li><a href="~/Property/Search/?type=warehouse">Warehouse</a></li>
         </ul>
     </section>
     <section class="widget">
         <h3 class="title">Featured Properties</h3>
         <ul class="featured-properties">
-            @foreach(var property in Property.Get(2))
+            @foreach (var property in Property.Get(2))
             {
-            <li>
-               @Html.Partial("_FeaturedPropertyPartial", property)
-            </li>
+                <li>
+                    @Html.Partial("_FeaturedPropertyPartial", property)
+                </li>
             }
         </ul>
     </section>

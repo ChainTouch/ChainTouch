@@ -1,12 +1,13 @@
 ﻿@using Weitm.Modules.Article.Models;
+@using Weitm.Modules.ChainTouch.Models;
 
 <!-- Sidebar -->
 <aside class="sidebar">
     <section class="widget">
-        <form role="search" method="get" id="searchform" class="searchform" action="#">
+        <form role="search" method="post" id="searchform" class="searchform" action="~/Property/Search/">
             <div>
                 <label class="screen-reader-text" for="s">Search for:</label>
-                <input type="text" value="" name="s" id="s">
+                <input type="text" value="" name="Location" id="s">
                 <input type="submit" id="searchsubmit" value="Search">
             </div>
         </form>
@@ -14,26 +15,12 @@
     <section class="widget">
         <h3 class="title">Featured Properties</h3>
         <ul class="featured-properties">
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="~/Images/featured-widget-image.jpg" alt="property 10">
-                    </a>
-                </figure>
-                <h4><a href="#" title="123456 Southwest 39th Shanghai">123456 Southwest 39th Shanghai</a></h4>
-                <p>This is th introduction… <a href="#">Read More</a></p>
-                <span class="price">$x,xxx Per Month</span>
-            </li>
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="~/Images/featured-widget-image.jpg" alt="property 10">
-                    </a>
-                </figure>
-                <h4><a href="#" title="123456 Southwest 39th Shanghai">123456 Southwest 39th Shanghai</a></h4>
-                <p>This is th introduction… <a href="#">Read More</a></p>
-                <span class="price">$x,xxx Per Month</span>
-            </li>
+            @foreach (var property in Property.Get(2))
+            {
+                <li>
+                    @Html.Partial("_FeaturedPropertyPartial", property)
+                </li>
+            }
         </ul>
     </section><section class="widget">
         <h3 class="title">Categories</h3>
