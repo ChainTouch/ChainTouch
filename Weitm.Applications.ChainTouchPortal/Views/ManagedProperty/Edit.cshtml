@@ -14,7 +14,21 @@
         sponser = industrialPark.Name;
     }
 }
-
+@section header{
+    <style type="text/css">
+        .map {
+            height: 250px;
+            display: inline-block;
+            box-sizing: border-box;
+            width: 55%;
+            min-width: 500px;
+        }
+    </style>
+}
+@section footer{
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=t8FKPs5UI5zu6tCnK2EFN3z7"></script>
+    <script src="~/Scripts/edit-page.js" type="text/javascript"></script>
+}
 <div id="left">
     @Html.Partial("_SidebarPartial")
 </div>
@@ -91,15 +105,13 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label for="EastLongitude" class="control-label">East Longitude</label>
+                                <label class="control-label">Locate by Map</label>
                                 <div class="controls">
-                                    <input type="text" name="EastLongitude" id="EastLongitude" class="input-large" placeholder="Map Auto Locate" value="@Model.EastLongitude">
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="NorthLatitude" class="control-label">North Latitude</label>
-                                <div class="controls">
-                                    <input type="text" name="NorthLatitude" id="NorthLatitude" class="input-large" placeholder="Map Auto Locate" value="@Model.NorthLatitude">
+                                    <input type="text" id="suggestId" size="20" value="百度" class="input-xlarge" />
+                                    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                                    <input type="text" name="EastLongitude" id="EastLongitude" placeholder="East Longitude" value="@Model.EastLongitude" class="input-small">
+                                    <input type="text" name="NorthLatitude" id="NorthLatitude" placeholder="North Latitude" value="@Model.NorthLatitude" class="input-small">
+                                    <div class="map" id="Map"></div>
                                 </div>
                             </div>
                             <div class="control-group">

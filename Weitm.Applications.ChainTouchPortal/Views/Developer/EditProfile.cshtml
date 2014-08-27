@@ -5,6 +5,23 @@
 @{
     
 }
+
+@section header{
+    <style type="text/css">
+        .map {
+            height: 250px;
+            display: inline-block;
+            box-sizing: border-box;
+            width:55%;
+            min-width:500px;
+        }
+    </style>
+}
+
+@section footer{
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=t8FKPs5UI5zu6tCnK2EFN3z7"></script>
+    <script src="~/Scripts/edit-page.js" type="text/javascript"></script>
+}
 <div id="left">
     @Html.Partial("_SidebarPartial")
 </div>
@@ -75,30 +92,40 @@
                                     <input type="text" name="ChinaHeadquarterAddress" id="ChinaHeadquarterAddress" value="@Model.ChinaHeadquarterAddress" class="input-xlarge">
                                 </div>
                             </div>
+                            <div class="control-group">
+                                <label class="control-label">Locate by Map</label>
+                                <div class="controls">
+                                    <input type="text" id="suggestId" size="20" value="百度" class="input-xlarge" />
+                                    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                                    <input type="text" name="EastLongitude" id="EastLongitude" placeholder="East Longitude" value="@Model.EastLongitude" class="input-small">
+                                    <input type="text" name="NorthLatitude" id="NorthLatitude" placeholder="North Latitude" value="@Model.NorthLatitude" class="input-small">
+                                    <div class="map" id="Map"></div>
+                                </div>
+                            </div>
                             @*<div class="control-group">
-        <label for="Contact" class="control-label">Contact</label>
-        <div class="controls">
-            <input type="text" name="LastName" id="LastName" class="input-small" placeholder="Last Name">
-            <input type="text" name="FirstName" id="FirstName" class="input-small" placeholder="First Name">
-            <br/>
-            <input type="text" name="Department" id="Department" class="input-xlarge" placeholder="Department">
-            <br />
-            <input type="text" name="Title" id="Title" class="input-xlarge" placeholder="Title">
-            <br />
-            <input type="text" name="Mobile" id="Mobile" class="input-xlarge" placeholder="Mobile Phone">
-            <br />
-            <input type="text" name="Landline" id="Landline" class="input-xlarge" placeholder="Landline">
-            <br />
-            <input type="text" name="Email" id="Email" class="input-xlarge" placeholder="Email Address">
-        </div>
-    </div>*@
+                                <label for="Contact" class="control-label">Contact</label>
+                                <div class="controls">
+                                    <input type="text" name="LastName" id="LastName" class="input-small" placeholder="Last Name">
+                                    <input type="text" name="FirstName" id="FirstName" class="input-small" placeholder="First Name">
+                                    <br/>
+                                    <input type="text" name="Department" id="Department" class="input-xlarge" placeholder="Department">
+                                    <br />
+                                    <input type="text" name="Title" id="Title" class="input-xlarge" placeholder="Title">
+                                    <br />
+                                    <input type="text" name="Mobile" id="Mobile" class="input-xlarge" placeholder="Mobile Phone">
+                                    <br />
+                                    <input type="text" name="Landline" id="Landline" class="input-xlarge" placeholder="Landline">
+                                    <br />
+                                    <input type="text" name="Email" id="Email" class="input-xlarge" placeholder="Email Address">
+                                </div>
+                            </div>*@
 
                             <div class="control-group">
                                 <label for="BriefIntroduction" class="control-label">Brief Introduction</label>
                                 <div class="controls">
                                     <textarea name="BriefIntroduction" id="BriefIntroduction" rows="10" class="input-block-level">@Model.BriefIntroduction</textarea>
                                     <span class="help-block">Pls briefly introduce your company.</span>
-</div>
+                                </div>
                             </div>
                             <div class="control-group">
                                 <label for="Pictures" class="control-label">Pictures</label>
